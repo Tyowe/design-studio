@@ -436,9 +436,34 @@ section {
     margin-bottom: 6px;
 }
 
-.order-note p {
-    font-size: 0.9rem;
+.payment-points {
+    list-style: none;
+    margin-top: 8px;
+    font-size: 0.88rem;
     color: var(--text-muted);
+}
+
+.payment-points li {
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 4px;
+}
+
+.payment-points li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.order-note a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.order-note a:hover {
+    text-decoration: underline;
 }
 
 /* ===================================================

@@ -101,7 +101,7 @@
             </div>
 
             <div class="portfolio-empty" id="portfolioEmpty" style="display:none;">
-                <p>Belum ada karya yang ditampilkan. Tambah gambar di <code>assets/images/</code> dan update <code>portfolio.js</code>.</p>
+            <p>Belum ada karya yang ditampilkan. Tambah gambar di <code>assets/images/</code> dan update array <code>portfolioItems</code> di <code>scripts.js</code>.</p>
             </div>
         </div>
     </section>
@@ -117,13 +117,13 @@
             <div class="order-layout">
                 <div class="order-form-wrapper">
                     <!-- FORM -->
-                    <form id="orderForm" name="orderForm" method="POST" data-netlify="true" netlify dataset-netlify="true">
+                    <form id="orderForm" name="orderForm" method="POST" data-netlify="true" action="/thank-you.html">
                         <!-- Hidden fields for Netlify -->
                         <input type="hidden" name="form-name" value="orderForm">
 
                         <div class="form-group">
                             <label for="name">Nama lengkap *</label>
-                            <input type="text" id="name" name="name" required placeholder="Contoh: Axel">
+                            <input type="text" id="name" name="name" required placeholder="Contoh: Budi Susanto">
                         </div>
 
                         <div class="form-group">
@@ -208,6 +208,25 @@
                     <div class="order-note">
                         <h4>⏰ Jam kerja</h4>
                         <p>Senin – Jumat, 09:00 – 18:00 WIB. Pesan di luar jam kerja tetap kami proses keesokan harinya.</p>
+                    </div>
+
+                    <div class="order-note payment-note">
+                        <h4>💳 Pembayaran</h4>
+                        <p>Kami menerima pembayaran via <strong>e-wallet QRIS</strong>. Setelah konfirmasi pesanan, kami kirim tagihan QR yang bisa dipindai dengan GoPay, OVO, DANA, ShopeePay, atau m-banking apa pun.</p>
+                        <ul class="payment-points">
+                            <li>DP 50% untuk mulai desain</li>
+                            <li>Pelunasan 50% sebelum file final dikirim</li>
+                            <li>QR dikirim via WhatsApp / email setelah brief disetujui</li>
+                        </ul>
+                    </div>
+
+                    <div class="order-note contact-note">
+                        <h4>📞 Kontak langsung</h4>
+                        <p>Butuh tanya cepat? Hubungi langsung:</p>
+                        <p>
+                            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener">WhatsApp: 0812-3456-7890</a><br>
+                            <a href="mailto:hello@aidesignstudio.id">Email: hello@aidesignstudio.id</a>
+                        </p>
                     </div>
                 </div>
             </div>

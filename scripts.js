@@ -184,7 +184,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Deteksi environment: kalau di Netlify, biarkan submit NATIVE (ke Netlify Forms).
+    // Kalau lokal (localhost / file://), simulasi simpan ke localStorage.
+    const isNetlify = window.location.hostname.includes('netlify.app') ||
+                      window.location.hostname.includes('netlify.com');
+
     form.addEventListener('submit', async (e) => {
+        // Di Netlify: jangan cegah submit, biarkan native form POST ke Netlify Forms.
+        if (isNetlify) {
+            return; // native submit jalan, Netlify akan handle
+        }
+
+        // Di lokal: simulasi (preventDefault + localStorage)
         e.preventDefault();
 
         // Ambil data form
@@ -200,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             files: formData.getAll('files'),
             consent: true,
             submittedAt: new Date().toISOString(),
-            source: 'AI Design Studio Website',
+            source: 'AI Design Studio Website (local)',
         };
 
         // UI: loading state
@@ -209,21 +220,13 @@ document.addEventListener('DOMContentLoaded', () => {
         btnLoader.style.display = 'inline';
 
         try {
-            // Opsi 1: Kirim ke Netlify Forms (auto jika website di-deploy ke Netlify)
-            // Form sudah pakai data-netlify="true" di HTML.
-            // Form submission akan jalan otomatis saat di Netlify.
-            // Di sini kita simulasi submit "berhasil" untuk pengalaman lokal.
-            //
-            // Opsi 2: Kirim ke Airtable API (butuh API key, disimpan di environment)
-            // Config: ganti ke Airtable kalau mau integrasi langsung.
-
             // Simpan ke localStorage sebagai cadangan (untuk preview lokal)
             saveToLocalStorage(data);
 
             showStatus(`
                 <strong>Pesan terkirim! ✅</strong><br>
                 Terima kasih, ${data.name}. Kami akan menghubungimu dalam 24 jam ke depan.<br>
-                <small style="color:#6b7280;">(Di browser lokal, order tersimpan di localStorage. Setelah deploy ke Netlify, order akan masuk ke Netlify Forms.)</small>
+                <small style="color:#6b7280;">(Mode lokal: order tersimpan di browser ini. Di live website, order akan masuk ke Netlify Forms / email studio.)</small>
             `, 'success');
 
             form.reset();
