@@ -18,7 +18,7 @@
   "target": "20-35",
   "reference": "",
   "created_at": "2026-08-30T01:03:11",
-  "updated_at": "2026-08-30T01:11:28",
+  "updated_at": "2026-08-30T01:21:08",
   "log": [
     {
       "at": "2026-08-30T01:03:11",
@@ -28,6 +28,11 @@
     {
       "at": "2026-08-30T01:11:28",
       "by": "hermes",
+      "msg": "update status, hermes, progress"
+    },
+    {
+      "at": "2026-08-30T01:21:08",
+      "by": "dashboard",
       "msg": "update status, hermes, progress"
     }
   ],

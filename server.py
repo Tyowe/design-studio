@@ -66,12 +66,18 @@ def all_orders():
     ensure_dir()
     orders = []
     for fn in os.listdir(ORDERS_DIR):
-        if fn.endswith(".json"):
-            try:
-                with open(os.path.join(ORDERS_DIR, fn), "r", encoding="utf-8") as f:
-                    orders.append(json.load(f))
-            except Exception:
-                pass
+        # skip helper files (payloads, partials) — only real orders
+        if not fn.endswith(".json") or fn.endswith("_payload.json"):
+            continue
+        try:
+            with open(os.path.join(ORDERS_DIR, fn), "r", encoding="utf-8") as f:
+                o = json.load(f)
+            # hanya order yang punya code & id valid
+            if not o.get("code") or not o.get("id"):
+                continue
+            orders.append(o)
+        except Exception:
+            pass
     # urutkan terbaru dulu
     orders.sort(key=lambda o: o.get("created_at", ""), reverse=True)
     return orders
