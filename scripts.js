@@ -42,12 +42,12 @@ const catalog = {
 };
 
 const serviceMeta = {
-  "Desain Logo": ["01 / BRANDING", "✦", "Identitas visual untuk membangun karakter dan positioning brand."],
-  "Desain Kemasan": ["02 / PACKAGING", "▣", "Kemasan yang menarik, informatif, dan siap masuk proses cetak."],
-  "Desain Poster": ["03 / PROMOTION", "◈", "Poster promosi untuk campaign, event, marketplace, dan social media."],
-  "Social Media Design": ["04 / CONTENT", "◎", "Konten visual konsisten untuk berbagai platform social media."],
-  "3D Mockup": ["05 / VISUAL", "◇", "Visualisasi produk realistis untuk katalog, presentasi, dan promosi."],
-  "Custom Design": ["06 / CUSTOM", "＋", "Kebutuhan desain lain seperti katalog, brosur, banner, menu, dan stationery."]
+  "Desain Logo": ["01 / BRANDING", "✦", "Logo profesional yang merepresentasikan karakter dan positioning brand.", ["Logo utama & alternatif", "3 konsep awal", "Revisi unlimited", "File PNG, SVG, AI"]],
+  "Desain Kemasan": ["02 / PACKAGING", "▣", "Desain kemasan yang menarik di rak, marketplace, maupun media promosi.", ["Box / pouch / label", "Layout informasi produk", "Spesifikasi cetak ready", "File siap cetak"]],
+  "Desain Poster": ["03 / PROMOTION", "◈", "Poster promosi untuk produk, event, campaign, marketplace, dan sosial media.", ["Poster digital", "Promotional ads", "Feed / Story / Banner", "High resolution"]],
+  "Social Media Design": ["04 / CONTENT", "◎", "Konten visual yang konsisten untuk Instagram, TikTok, Facebook, dan marketplace.", ["Feed & carousel", "Story", "Promo produk", "Template konten"]],
+  "3D Mockup": ["05 / VISUAL", "◇", "Visualisasi produk yang realistis untuk presentasi, katalog, atau promosi.", ["Packaging mockup", "Product visualization", "Realistic lighting", "High resolution"]],
+  "Custom Design": ["06 / CUSTOM", "＋", "Punya kebutuhan desain lain? Ceritakan project-mu dan kami bantu tentukan solusinya.", ["Menu / katalog", "Banner & brosur", "Stationery", "Custom request"]]
 };
 
 let currentService = "";
@@ -64,18 +64,17 @@ function renderServices() {
   const grid = document.getElementById("serviceGrid");
   grid.innerHTML = "";
   Object.keys(catalog).forEach(service => {
-    const [num, icon, desc] = serviceMeta[service];
+    const [num, icon, desc, bullets] = serviceMeta[service];
     const card = document.createElement("article");
     card.className = "service-card";
+    const bulletHtml = (bullets || []).map(b => `<li>${b}</li>`).join("");
     card.innerHTML = `
       <div class="service-num">${num}</div>
       <div class="service-icon">${icon}</div>
       <h3>${service}</h3>
       <p>${desc}</p>
       <ul>
-        <li>Brief terstruktur</li>
-        <li>Harga otomatis</li>
-        <li>Workflow project jelas</li>
+        ${bulletHtml}
       </ul>
       <div class="service-price">Mulai ${rupiah(catalog[service][0][1])} <small>/ project</small></div>
       <button class="btn btn-primary" onclick="openOrder('${service}')">Pilih Paket →</button>
@@ -157,6 +156,7 @@ document.getElementById("orderForm").addEventListener("submit", function (e) {
 
   const pkg = catalog[currentService][currentPackageIndex];
   const total = getTotal();
+  const dp = Math.round(total * 0.5);
 
   document.getElementById("orderScreen").style.display = "none";
   document.getElementById("paymentScreen").classList.add("show");
@@ -164,7 +164,8 @@ document.getElementById("orderForm").addEventListener("submit", function (e) {
   document.getElementById("paymentOrderId").textContent = currentOrderId;
   document.getElementById("payService").textContent = currentService;
   document.getElementById("payPackage").textContent = pkg[0];
-  document.getElementById("payTotal").textContent = rupiah(total);
+  document.getElementById("payTotal").textContent = rupiah(dp);
+  document.getElementById("payNote").textContent = `DP 50% untuk mulai desain (Rp ${rupiah(dp)}). Sisa Rp ${rupiah(total - dp)} lunas sebelum file final dikirim.`;
 });
 
 function backToOrder() {
