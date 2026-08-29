@@ -1,246 +1,154 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Design Studio — Desain Logo, Kemasan, Poster & Sosial Media</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AI Design Studio — jasa desain logo, kemasan, poster, dan social media untuk brand yang serius.">
+<title>AI Design Studio — Jasa Desain Profesional</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">AI Design Studio</a>
-            <ul class="nav-links">
-                <li><a href="#services">Layanan</a></li>
-                <li><a href="#portfolio">Karya</a></li>
-                <li><a href="#order" class="btn-order-nav">Pesan Sekarang</a></li>
-            </ul>
-        </div>
-    </nav>
+<nav>
+  <div class="container navin">
+    <a class="logo" href="#">AI<span>DESIGN</span>STUDIO</a>
+    <div class="navlinks">
+      <a href="#services">Layanan</a>
+      <a href="#portfolio">Karya</a>
+      <a href="#process">Cara Kerja</a>
+      <a href="#contact">Mulai Project</a>
+    </div>
+    <a href="#services" class="btn btn-primary">Pilih Jasa</a>
+  </div>
+</nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h1>Desain yang <span class="highlight">bicara</span> untuk brand kamu</h1>
-                <p class="hero-subtitle">Logo, kemasan produk, poster, dan konten sosial media — <br>buat apa adanya, bukan template.</p>
-                <a href="#order" class="btn-primary">Mulai Pesan →</a>
-            </div>
-        </div>
-    </section>
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Design Service • Logo • Packaging • Poster • Social Media</div>
+    <h1>Visual yang bikin brand terlihat <em>lebih bernilai.</em></h1>
+    <p>AI Design Studio membantu UMKM, brand baru, dan bisnis berkembang membuat identitas visual yang profesional, menarik, dan siap digunakan untuk jualan.</p>
+    <a href="#services" class="btn btn-primary">Lihat Pilihan Jasa →</a>
+    <div class="hero-tags">
+      <span class="tag">Logo Design</span>
+      <span class="tag">Packaging Design</span>
+      <span class="tag">Poster & Ads</span>
+      <span class="tag">Social Media</span>
+      <span class="tag">Complete Package</span>
+    </div>
+  </div>
+</header>
 
-    <!-- SERVICES -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Layanan</h2>
-            <div class="services-grid">
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">Our Services</div><h2>Pilih kebutuhan<br>desainmu.</h2></div>
+      <p>Klik tombol <b>Beli / Mulai Project</b>. Form brief akan langsung terbuka sesuai jasa yang kamu pilih.</p>
+    </div>
 
-                <div class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <h3>Desain Logo</h3>
-                    <p>Logo yang merepresentasikan branding kamu — bukan cuma bentuk, tapi identitas. Cocok buat brand baru atau refresh logo lama.</p>
-                    <ul class="service-features">
-                        <li>✦ Konsep awal (3 pilihan)</li>
-                        <li>✦ Revisi unlimited</li>
-                        <li>✦ File siap cetak & digital (PNG, SVG, AI)</li>
-                    </ul>
-                    <p class="service-price"><strong>Mulai Rp 350.000</strong></p>
-                </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-num">01 / BRANDING</div><div class="icon">✦</div><h3>Desain Logo</h3>
+        <p>Logo profesional yang merepresentasikan karakter dan positioning brand kamu.</p>
+        <ul><li>Logo utama & alternatif</li><li>3 konsep awal</li><li>Revisi unlimited</li><li>File PNG, SVG, AI</li></ul>
+        <div class="price">Mulai Rp 350K <small>/ project</small></div>
+        <button class="btn btn-primary buy" data-service="Desain Logo">Beli / Mulai Project</button>
+      </article>
 
-                <div class="service-card">
-                    <div class="service-icon">📦</div>
-                    <h3>Desain Kemasan</h3>
-                    <p>Desain kemasan produk — dari label, kemasan kecil, sampai kardus. Perhatian sama detail yang bilang produk kamu worth it.</p>
-                    <ul class="service-features">
-                        <li>✦ Layout & seni pakai</li>
-                        <li>✦ Spesifikasi cetak ready</li>
-                        <li>✦ Material & finish suggestions</li>
-                    </ul>
-                    <p class="service-price"><strong>Mulai Rp 500.000</strong></p>
-                </div>
+      <article class="card">
+        <div class="card-num">02 / PACKAGING</div><div class="icon">▣</div><h3>Desain Kemasan</h3>
+        <p>Desain kemasan yang menarik di rak, marketplace, maupun media promosi.</p>
+        <ul><li>Box / pouch / label</li><li>Layout informasi produk</li><li>Spesifikasi cetak ready</li><li>File siap cetak</li></ul>
+        <div class="price">Mulai Rp 500K <small>/ design</small></div>
+        <button class="btn btn-primary buy" data-service="Desain Kemasan">Beli / Mulai Project</button>
+      </article>
 
-                <div class="service-card">
-                    <div class="service-icon">🖼️</div>
-                    <h3>Desain Poster / Sosial Media</h3>
-                    <p>Poster acara, banner, feed Instagram, story, atau carousel. Konten yang orang nggak nyari — skip-nya.</p>
-                    <ul class="service-features">
-                        <li>✦ Multi format (feed, story, poster)</li>
-                        <li>✦ Template reusable (kalau mau)</li>
-                        <li>✦ Optimasi tiap platform</li>
-                    </ul>
-                    <p class="service-price"><strong>Mulai Rp 150.000</strong></p>
-                </div>
+      <article class="card">
+        <div class="card-num">03 / PROMOTION</div><div class="icon">◈</div><h3>Desain Poster</h3>
+        <p>Poster promosi untuk produk, event, campaign, marketplace, dan sosial media.</p>
+        <ul><li>Poster digital</li><li>Promotional ads</li><li>Feed / Story / Banner</li><li>High resolution</li></ul>
+        <div class="price">Mulai Rp 150K <small>/ design</small></div>
+        <button class="btn btn-primary buy" data-service="Desain Poster">Beli / Mulai Project</button>
+      </article>
 
-                <div class="service-card featured">
-                    <div class="service-icon">🌐</div>
-                    <h3>Paket Lengkap</h3>
-                    <p>Logo + kemasan + konten sosial media dalam satu paket. Build brand dari A sampai Z, konsisten di semua touchpoint.</p>
-                    <ul class="service-features">
-                        <li>✦ Semua layanan di atas</li>
-                        <li>✦ Style guide sederhana</li>
-                        <li>✦ 1 bulan support setelah selesai</li>
-                    </ul>
-                    <p class="service-price"><strong>Mulai Rp 1.200.000</strong></p>
-                </div>
+      <article class="card">
+        <div class="card-num">04 / SOCIAL MEDIA</div><div class="icon">◎</div><h3>Social Media Design</h3>
+        <p>Konten visual yang konsisten untuk Instagram, TikTok, Facebook, dan marketplace.</p>
+        <ul><li>Feed & carousel</li><li>Story</li><li>Promo produk</li><li>Template konten</li></ul>
+        <div class="price">Mulai Rp 150K <small>/ design</small></div>
+        <button class="btn btn-primary buy" data-service="Social Media Design">Beli / Mulai Project</button>
+      </article>
 
-            </div>
-        </div>
-    </section>
+      <article class="card featured">
+        <div class="card-num">05 / COMPLETE</div><div class="icon">＋</div><h3>Paket Lengkap</h3>
+        <p>Logo + kemasan + konten sosial media dalam satu paket. Build brand dari A sampai Z.</p>
+        <ul><li>Semua layanan di atas</li><li>Style guide sederhana</li><li>1 bulan support</li><li>Konsisten semua touchpoint</li></ul>
+        <div class="price">Mulai Rp 1.200K <small>/ package</small></div>
+        <button class="btn btn-primary buy" data-service="Paket Lengkap">Beli / Mulai Project</button>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">Seleksi Karya</h2>
-            <p class="section-subtitle">Beberapa contoh hasil kerja — klik buat liat detail.</p>
+<section id="portfolio">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">Selected Work</div><h2>Seleksi karya.</h2></div>
+      <p>Beberapa hasil kerja studio. Klik untuk lihat detail.</p>
+    </div>
+    <div class="portfolio-grid" id="portfolioGrid">
+      <div class="portfolio-loading">Loading karya...</div>
+    </div>
+    <div class="portfolio-empty" id="portfolioEmpty" style="display:none;">
+      <p>Belum ada karya yang ditampilkan. Tambah gambar di <code>assets/images/</code> dan update array <code>portfolioItems</code> di <code>scripts.js</code>.</p>
+    </div>
+  </div>
+</section>
 
-            <div class="portfolio-grid" id="portfolioGrid">
-                <!-- Portfolio items will be injected by JS -->
-                <div class="portfolio-loading">Loading karya...</div>
-            </div>
+<section id="process">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">Simple Process</div><h2>Pesan tanpa ribet.</h2></div><p>Dari pilih jasa sampai brief project, semuanya dibuat sesingkat mungkin.</p></div>
+    <div class="process">
+      <div class="step"><b>01</b><h3>Pilih Jasa</h3><p>Pilih layanan yang sesuai kebutuhan bisnis.</p></div>
+      <div class="step"><b>02</b><h3>Isi Brief</h3><p>Isi informasi brand, ukuran, style, dan kebutuhan desain.</p></div>
+      <div class="step"><b>03</b><h3>Konfirmasi</h3><p>Brief dikirim ke WhatsApp studio untuk dicek & dikonfirmasi.</p></div>
+      <div class="step"><b>04</b><h3>Design</h3><p>Project dikerjakan sesuai brief dan timeline yang disepakati.</p></div>
+    </div>
+  </div>
+</section>
 
-            <div class="portfolio-empty" id="portfolioEmpty" style="display:none;">
-            <p>Belum ada karya yang ditampilkan. Tambah gambar di <code>assets/images/</code> dan update array <code>portfolioItems</code> di <code>scripts.js</code>.</p>
-            </div>
-        </div>
-    </section>
+<section id="contact">
+  <div class="container">
+    <div class="cta">
+      <div><h2>Siap bikin brand<br>terlihat lebih keren?</h2><p>Pilih layanan di atas dan isi brief. Kamu tidak perlu mengirim pesan dari awal — data project sudah dikumpulkan lewat form.</p></div>
+      <button class="btn" onclick="openForm('Custom Design')">Mulai Project →</button>
+    </div>
+  </div>
+</section>
 
-    <!-- ORDER SECTION -->
-    <section id="order" class="order-section">
-        <div class="container order-container">
-            <div class="order-header">
-                <h2>Pesan Desain</h2>
-                <p>Isi form di bawah — kami akan balas dalam 24 jam.</p>
-            </div>
+<footer class="container"><span>© 2026 AI Design Studio</span><span>Design for brands that want to grow.</span></footer>
 
-            <div class="order-layout">
-                <div class="order-form-wrapper">
-                    <!-- FORM -->
-                    <form id="orderForm" name="orderForm" method="POST" data-netlify="true" action="/thank-you.html">
-                        <!-- Hidden fields for Netlify -->
-                        <input type="hidden" name="form-name" value="orderForm">
+<div class="modal" id="modal">
+  <div class="modalbox">
+    <div class="modalhead"><div><div class="eyebrow">Project Brief</div><h2>Mulai Project</h2></div><button class="close" onclick="closeForm()">×</button></div>
+    <div class="selected">Layanan dipilih: <strong id="serviceName">-</strong></div>
+    <form id="briefForm">
+      <input type="hidden" id="service" name="service">
+      <div class="formgrid">
+        <div class="field"><label>Nama</label><input name="name" required placeholder="Nama lengkap"></div>
+        <div class="field"><label>WhatsApp</label><input name="phone" required placeholder="08xxxxxxxxxx"></div>
+        <div class="field"><label>Email</label><input type="email" name="email" placeholder="nama@email.com"></div>
+        <div class="field"><label>Nama Brand / Bisnis</label><input name="brand" required placeholder="Contoh: Okuki"></div>
+        <div class="field"><label>Jenis Bisnis</label><input name="business" placeholder="Makanan, fashion, jasa, dll."></div>
+        <div class="field"><label>Budget</label><select name="budget"><option>Belum tahu / konsultasi</option><option>Rp 150K – 500K</option><option>Rp 500K – 1 Juta</option><option>Rp 1 – 2 Juta</option><option>> Rp 2 Juta</option></select></div>
+        <div class="field full"><label>Jelaskan kebutuhan desain</label><textarea name="brief" required placeholder="Ceritakan produk, konsep, ukuran, warna, referensi, target market, dan informasi penting lainnya..."></textarea></div>
+        <div class="field full"><label>Referensi / Link</label><input name="reference" placeholder="Link Google Drive, Instagram, Pinterest, dll."></div>
+      </div>
+      <div class="formactions"><button type="button" class="btn btn-dark" onclick="closeForm()">Batal</button><button class="btn btn-primary" type="submit">Kirim Brief →</button></div>
+      <div class="note">Brief akan diarahkan ke WhatsApp studio. Ganti nomor WhatsApp pada bagian atas <code>scripts.js</code> sebelum website dipakai.</div>
+    </form>
+  </div>
+</div>
 
-                        <div class="form-group">
-                            <label for="name">Nama lengkap *</label>
-                            <input type="text" id="name" name="name" required placeholder="Contoh: Budi Susanto">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required placeholder="contoh@email.com">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="wa">Nomor WhatsApp *</label>
-                            <input type="tel" id="wa" name="wa" required placeholder="08123456789">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="service">Layanan yang dipesan *</label>
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected>— Pilih layanan —</option>
-                                <option value="Desain Logo">🎨 Desain Logo</option>
-                                <option value="Desain Kemasan">📦 Desain Kemasan</option>
-                                <option value="Desain Poster / Sosial Media">🖼️ Desain Poster / Sosial Media</option>
-                                <option value="Paket Lengkap">🌐 Paket Lengkap</option>
-                                <option value="Layanan Lain">Mohon dideskripsikan di kolom pesan</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="budget">Budget kisaran *</label>
-                            <select id="budget" name="budget" required>
-                                <option value="" disabled selected>— Kisaran budget —</option>
-                                <option value="Di bawah Rp 200.000">Di bawah Rp 200.000</option>
-                                <option value="Rp 200.000 - Rp 500.000">Rp 200.000 - Rp 500.000</option>
-                                <option value="Rp 500.000 - Rp 1.000.000">Rp 500.000 - Rp 1.000.000</option>
-                                <option value="Rp 1.000.000 - Rp 2.000.000">Rp 1.000.000 - Rp 2.000.000</option>
-                                <option value="Di atas Rp 2.000.000">Di atas Rp 2.000.000</option>
-                                <option value="Belum tahu">Belum tahu, butuh konsultasi</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="deadline">Deadline</label>
-                            <input type="date" id="deadline" name="deadline">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Pesan & deskripsi singkat *</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Kira-kira mau desain seperti apa? Ada referensi? Warna kegemaran? Gaya yang dicari?"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="files">Upload referensi (gambar / contoh)</label>
-                            <input type="file" id="files" name="files" multiple accept="image/*,.pdf,.doc,.docx">
-                            <small>Opsional — bisa beberapa file. Maks 10MB per file.</small>
-                        </div>
-
-                        <div class="form-group consent-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="consent" required>
-                                <span>Saya setuju pesan ini ditangani dan diemail ke alamat yang tertera.</span>
-                            </label>
-                        </div>
-
-                        <button type="submit" class="btn-submit" id="submitBtn">
-                            <span class="btn-text">Kirim Pesanan</span>
-                            <span class="btn-loader" style="display:none;">Mengirim...</span>
-                        </button>
-                    </form>
-
-                    <!-- STATUS MESSAGE -->
-                    <div id="formStatus" class="form-status" style="display:none;"></div>
-                </div>
-
-                <div class="order-info">
-                    <h3>Cara kerja</h3>
-                    <ol class="steps">
-                        <li><strong>Isi form</strong> di atas dengan detail yang kamu butuhkan.</li>
-                        <li>Kami <strong>terima pesan</strong> dan mengecek ketersediaan dalam 1x24 jam.</li>
-                        <li>Kami <strong>hubungi kamu</strong> lewat WhatsApp atau email untuk konfirmasi.</li>
-                        <li>Setelah konfirmasi, kami <strong>mulai proses desain</strong> sesuai deadline.</li>
-                        <li>Kamu dapat <strong>draft awal</strong> dan bisa request revisi.</li>
-                        <li>Desain <strong>final siap pakai</strong> — file dikirim via Google Drive / email.</li>
-                    </ol>
-
-                    <div class="order-note">
-                        <h4>⏰ Jam kerja</h4>
-                        <p>Senin – Jumat, 09:00 – 18:00 WIB. Pesan di luar jam kerja tetap kami proses keesokan harinya.</p>
-                    </div>
-
-                    <div class="order-note payment-note">
-                        <h4>💳 Pembayaran</h4>
-                        <p>Kami menerima pembayaran via <strong>e-wallet QRIS</strong>. Setelah konfirmasi pesanan, kami kirim tagihan QR yang bisa dipindai dengan GoPay, OVO, DANA, ShopeePay, atau m-banking apa pun.</p>
-                        <ul class="payment-points">
-                            <li>DP 50% untuk mulai desain</li>
-                            <li>Pelunasan 50% sebelum file final dikirim</li>
-                            <li>QR dikirim via WhatsApp / email setelah brief disetujui</li>
-                        </ul>
-                    </div>
-
-                    <div class="order-note contact-note">
-                        <h4>📞 Kontak langsung</h4>
-                        <p>Butuh tanya cepat? Hubungi langsung:</p>
-                        <p>
-                            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener">WhatsApp: 0812-3456-7890</a><br>
-                            <a href="mailto:hello@aidesignstudio.id">Email: hello@aidesignstudio.id</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <p>&copy; 2026 AI Design Studio. All rights reserved.</p>
-            <p class="footer-note">Buat dengan ❤️ untuk brand yang serius.</p>
-        </div>
-    </footer>
-
-    <script src="scripts.js"></script>
+<script src="scripts.js"></script>
 </body>
 </html>
