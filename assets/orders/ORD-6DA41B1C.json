@@ -1,0 +1,29 @@
+{
+  "id": "ORD-6DA41B1C",
+  "code": "ADS-2026-0001",
+  "client": "Test Client",
+  "phone": "08123456789",
+  "email": "test@mail.com",
+  "brand": "Kopi Test",
+  "service": "Logo",
+  "package": "Professional",
+  "price": 650000,
+  "payment": "PAID",
+  "status": "PAID",
+  "hermes": "WAITING",
+  "progress": 100,
+  "objective": "Logo kopi susu kekinian, target anak muda",
+  "style": "minimalis premium",
+  "business": "",
+  "target": "",
+  "reference": "",
+  "created_at": "2026-08-30T00:57:32",
+  "updated_at": "2026-08-30T00:57:32",
+  "log": [
+    {
+      "at": "2026-08-30T00:57:32",
+      "by": "system",
+      "msg": "Order dibuat dari landing page"
+    }
+  ]
+}

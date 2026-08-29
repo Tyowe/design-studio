@@ -173,11 +173,53 @@ function backToOrder() {
   document.getElementById("orderScreen").style.display = "block";
 }
 
+// ===== ORDER BRIDGE (simpan order ke server lokal) =====
+const BRIDGE_URL = "http://localhost:7000/api/orders";
+
+function sendOrderToBridge(payload) {
+  return fetch(BRIDGE_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  }).then(r => r.json()).catch(err => ({ ok: false, error: String(err) }));
+}
+
 function simulatePayment(method) {
+  const total = getTotal();
+  const dp = Math.round(total * 0.5);
+
+  // Kumpulkan data brief dari form
+  const form = document.getElementById("orderForm");
+  const fd = new FormData(form);
+  const orderPayload = {
+    service: currentService,
+    package: catalog[currentService][currentPackageIndex][0],
+    price: total,
+    paid: true, // demo: anggap DP 50% sudah lunas
+    name: fd.get("name") || "",
+    phone: fd.get("phone") || "",
+    email: fd.get("email") || "",
+    brand: fd.get("brand") || "",
+    business: fd.get("business") || "",
+    target: fd.get("target") || "",
+    style: fd.get("style") || "",
+    brief: fd.get("brief") || "",
+    reference: fd.get("reference") || ""
+  };
+
+  // Tampilkan sukses dulu (UX), lalu kirim ke server di background
   document.getElementById("paymentScreen").classList.remove("show");
   document.getElementById("successScreen").classList.add("show");
   document.getElementById("successOrderId").textContent = currentOrderId;
-  console.log("Payment simulated:", { method, orderId: currentOrderId, service: currentService, total: getTotal() });
+  console.log("Payment simulated:", { method, orderId: currentOrderId, service: currentService, total: total });
+
+  sendOrderToBridge(orderPayload).then(res => {
+    if (res.ok) {
+      console.log("Order tersimpan ke server:", res.order.code);
+    } else {
+      console.warn("Gagal simpan ke server (pastikan server.py jalan):", res.error);
+    }
+  });
 }
 
 function finishOrder() {
