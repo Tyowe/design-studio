@@ -1,36 +1,7 @@
 {
-  "id": "ORD-6DA41B1C",
-  "code": "ADS-2026-0001",
-  "client": "Test Client",
-  "phone": "08123456789",
-  "email": "test@mail.com",
-  "brand": "Kopi Test",
-  "service": "Logo",
-  "package": "Professional",
-  "price": 650000,
-  "payment": "PAID",
   "status": "CONCEPT",
   "hermes": "COMPLETED",
   "progress": 40,
-  "objective": "Logo kopi susu kekinian, target anak muda",
-  "style": "minimalis premium",
-  "business": "",
-  "target": "",
-  "reference": "",
-  "created_at": "2026-08-30T00:57:32",
-  "updated_at": "2026-08-30T00:59:00",
-  "log": [
-    {
-      "at": "2026-08-30T00:57:32",
-      "by": "system",
-      "msg": "Order dibuat dari landing page"
-    },
-    {
-      "at": "2026-08-30T00:59:00",
-      "by": "hermes",
-      "msg": "update status, hermes, progress"
-    }
-  ],
   "analysis": "Brand 'Kopi Test' butuh logo kopi susu kekinian untuk anak muda, dengan gaya minimalis premium. Masalah utamanya: kategori kopi susu itu SANGAT sesak — Kopi Kenangan, Janji Jiwa, Fore Coffee, dll semua main di warna hangat + wordmark. Biar nggak tenggelam, logo harus punya personalitas sendiri tapi tetap clean.\n\nBRIEF LEMAH: field business, target detail, dan reference kosong. Ambil asumsi wajar — audiens anak muda (18–30, urban, Gen Z + millennial), kopi susu = fungsional (kafein) sekaligus sosial (hangout, konten, status). SARAN SEBELUM PRODUKSI: Tyo perlu klarifikasi 3 hal — (1) mau beda dari kompetitor atau ikut arus kekinian, (2) tone: elegan vs ramah/playful, (3) ada short-brand/panggilan? (mis. 'Test' atau 'KT').",
   "concepts": [
     {
@@ -70,5 +41,6 @@
       "weaknesses": "Serif bisa kurang 'kekinian' di mata Gen Z; butuh balancing biar nggak kelihatan tua/konservatif"
     }
   ],
-  "qc": "QC AWAL (sebelum produksi visual):\n\nKONTEN\n- Ejaan 'Kopi Test' konsisten di semua lockup\n- Tidak ada claim menyesatkan / kata terlarang\n- Tagline (jika ada) selaras brief\n\nVISUAL\n- Hierarchy jelas: icon vs wordmark tidak saling mendominasi\n- Alignment & spacing konsisten (grid)\n- Terbaca di ukuran kecil (favicon / app icon 32px)\n- Kontras cukup di mode terang & gelap\n- Komposisi seimbang, tidak clutter\n\nTEKNIS\n- Vektor murni (AI/SVG) — scalable tanpa lost quality\n- Palette maks 3 warna\n- Clear space / safe area didefinisikan\n- Export: SVG + PNG transparan (16/32/128/512) + PDF\n- Cek contrast ratio (WCAG) untuk aksesibilitas"
+  "qc": "QC AWAL (sebelum produksi visual):\n\nKONTEN\n- Ejaan 'Kopi Test' konsisten di semua lockup\n- Tidak ada claim menyesatkan / kata terlarang\n- Tagline (jika ada) selaras brief\n\nVISUAL\n- Hierarchy jelas: icon vs wordmark tidak saling mendominasi\n- Alignment & spacing konsisten (grid)\n- Terbaca di ukuran kecil (favicon / app icon 32px)\n- Kontras cukup di mode terang & gelap\n- Komposisi seimbang, tidak clutter\n\nTEKNIS\n- Vektor murni (AI/SVG) — scalable tanpa lost quality\n- Palette maks 3 warna\n- Clear space / safe area didefinisikan\n- Export: SVG + PNG transparan (16/32/128/512) + PDF\n- Cek contrast ratio (WCAG) untuk aksesibilitas",
+  "_by": "hermes"
 }
