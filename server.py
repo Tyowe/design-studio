@@ -98,6 +98,50 @@ def save_order(order):
         json.dump(order, f, indent=2, ensure_ascii=False)
 
 
+# ---- Static file serving (biar 1 server, no CORS) ----
+STATIC_DIR = os.path.join(HERE)  # root = folder AI Design Studio
+DASHBOARD_FILE = os.path.join("D:/Hermes Agent", "Dashboard Design Studio V2.html")
+
+MIME = {
+    ".html": "text/html; charset=utf-8",
+    ".css": "text/css; charset=utf-8",
+    ".js": "application/javascript; charset=utf-8",
+    ".json": "application/json; charset=utf-8",
+    ".png": "image/png",
+    ".jpg": "image/jpeg",
+    ".svg": "image/svg+xml",
+    ".ico": "image/x-icon",
+}
+
+
+def serve_static(self, path):
+    """Serve file statis dari folder project (no CORS, same-origin)."""
+    from urllib.parse import unquote
+    path = unquote(path).lstrip("/")
+    if path in ("", "/"):
+        # landing page
+        fpath = os.path.join(STATIC_DIR, "index.html")
+    elif path in ("dashboard", "dashboard/", "dash"):
+        fpath = DASHBOARD_FILE
+    else:
+        # coba di folder project
+        fpath = os.path.join(STATIC_DIR, path)
+        if not os.path.exists(fpath):
+            # fallback: cari di assets
+            fpath = os.path.join(STATIC_DIR, "assets", path)
+    if os.path.exists(fpath) and os.path.isfile(fpath):
+        ext = os.path.splitext(fpath)[1].lower()
+        with open(fpath, "rb") as f:
+            body = f.read()
+        self.send_response(200)
+        self.send_header("Content-Type", MIME.get(ext, "application/octet-stream"))
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+    else:
+        self._send(404, {"error": f"file not found: {path}"})
+
+
 def next_code():
     # ADS-2026-XXXX (lanjut dari nomor terbesar)
     year = time.strftime("%Y")
@@ -139,22 +183,23 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed = urlparse(self.path)
         qs = parse_qs(parsed.query)
-        if parsed.path == "/api/orders":
-            orders = all_orders()
-            status = qs.get("status", [None])[0]
-            if status:
-                orders = [o for o in orders if o.get("status") == status]
-            # spy dashboard bisa tau berapa belum diproses Hermes
-            pending = [o for o in all_orders()
-                       if o.get("status") in ("NEW", "PAID", "BRIEF REVIEW")]
-            self._send(200, {"orders": orders, "pending_count": len(pending)})
-        elif parsed.path == "/api/health":
-            self._send(200, {"ok": True, "orders": len(all_orders())})
-        elif parsed.path == "/":
-            self._send(200, {"service": "AI Design Studio Order Bridge",
-                             "docs": "POST /api/orders, GET /api/orders, PUT /api/orders/<id>"})
+        if parsed.path.startswith("/api/"):
+            if parsed.path == "/api/orders":
+                orders = all_orders()
+                status = qs.get("status", [None])[0]
+                if status:
+                    orders = [o for o in orders if o.get("status") == status]
+                # spy dashboard bisa tau berapa belum diproses Hermes
+                pending = [o for o in all_orders()
+                           if o.get("status") in ("NEW", "PAID", "BRIEF REVIEW")]
+                self._send(200, {"orders": orders, "pending_count": len(pending)})
+            elif parsed.path == "/api/health":
+                self._send(200, {"ok": True, "orders": len(all_orders())})
+            else:
+                self._send(404, {"error": "not found"})
         else:
-            self._send(404, {"error": "not found"})
+            # non-API -> serve static file (landing / dashboard)
+            serve_static(self, parsed.path)
 
     def do_POST(self):
         parsed = urlparse(self.path)
