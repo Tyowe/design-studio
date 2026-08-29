@@ -44,10 +44,11 @@ Primary areas of experience:
 The AI Design Studio is initially focused on:
 
 1. Logo Design
-2. Poster Design
-3. Packaging Design
+2. Packaging Design
+3. Poster Design
 4. Social Media Design (feed, story, carousel, banner)
-5. Complete Brand Package (Logo + Packaging + Social Media bundle)
+5. 3D Mockup
+6. Custom Design (menu, katalog, banner, brosur, stationery, custom request)
 
 Additional services may be added later.
 
