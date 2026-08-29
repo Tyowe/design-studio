@@ -1,135 +1,195 @@
 /* ===================================================
    AI DESIGN STUDIO — Scripts
+   Order system: service -> package -> addon -> checkout -> payment
    =================================================== */
 
-// ===== WHATSAPP CONFIG =====
-// GANTI dengan nomor WhatsApp bisnis, tanpa "+" atau "0" di depan.
-// Contoh: 0812-3456-7890 -> "6281234567890"
+// ===== WHATSAPP CONFIG (opsional, untuk notifikasi) =====
+// GANTI dengan nomor studio tanpa "+" atau "0" di depan.
 const WHATSAPP_NUMBER = "6281234567890";
 
-// ===== PORTFOLIO DATA =====
-// Tambah gambar ke assets/images/ lalu daftarkan di sini.
-const portfolioItems = [
-    {
-        src: 'assets/images/sample-1.jpg',
-        alt: 'Desain Logo Boutique Fashion',
-        title: 'Logo — Boutique Fashion',
-        desc: 'Logo minimalis untuk brand fashion lokal.'
-    },
-    {
-        src: 'assets/images/sample-2.jpg',
-        alt: 'Kemasan Produk Skincare',
-        title: 'Kemasan — Skincare Series',
-        desc: 'Desain kemasan serum wajah, 3 varian.'
-    },
-    {
-        src: 'assets/images/sample-3.jpg',
-        alt: 'Poster Acara Komunitas',
-        title: 'Poster — Komunitas Desain',
-        desc: 'Poster undangan acara gathering desain.'
-    },
-];
+// ===== CATALOG (6 layanan, masing-masing 3 paket) =====
+const catalog = {
+  "Desain Logo": [
+    ["Basic", 350000, "1 konsep • 2 revisi • PNG/JPG"],
+    ["Professional", 650000, "2 konsep • 3 revisi • vector file"],
+    ["Premium", 1000000, "3 konsep • mini brand guide • source file"]
+  ],
+  "Desain Kemasan": [
+    ["Basic", 750000, "1 desain • 2 revisi • preview"],
+    ["Professional", 1200000, "2 konsep • 3 revisi • mockup"],
+    ["Premium", 1800000, "2 konsep • mockup • print-ready file"]
+  ],
+  "Desain Poster": [
+    ["Basic", 150000, "1 desain • 1 revisi"],
+    ["Professional", 300000, "2 desain • 2 revisi"],
+    ["Campaign", 550000, "3 desain • campaign set"]
+  ],
+  "Social Media Design": [
+    ["Basic", 100000, "1 design"],
+    ["Content Pack", 450000, "5 design"],
+    ["Monthly Pack", 900000, "12 design"]
+  ],
+  "3D Mockup": [
+    ["Basic", 250000, "1 visual"],
+    ["Professional", 450000, "2 angle"],
+    ["Premium", 700000, "3 visual high resolution"]
+  ],
+  "Custom Design": [
+    ["Consultation", 250000, "konsultasi + scope project"],
+    ["Standard", 500000, "custom design project"],
+    ["Custom", 1000000, "starting price"]
+  ]
+};
 
-document.addEventListener('DOMContentLoaded', () => {
+const serviceMeta = {
+  "Desain Logo": ["01 / BRANDING", "✦", "Identitas visual untuk membangun karakter dan positioning brand."],
+  "Desain Kemasan": ["02 / PACKAGING", "▣", "Kemasan yang menarik, informatif, dan siap masuk proses cetak."],
+  "Desain Poster": ["03 / PROMOTION", "◈", "Poster promosi untuk campaign, event, marketplace, dan social media."],
+  "Social Media Design": ["04 / CONTENT", "◎", "Konten visual konsisten untuk berbagai platform social media."],
+  "3D Mockup": ["05 / VISUAL", "◇", "Visualisasi produk realistis untuk katalog, presentasi, dan promosi."],
+  "Custom Design": ["06 / CUSTOM", "＋", "Kebutuhan desain lain seperti katalog, brosur, banner, menu, dan stationery."]
+};
 
-    // ===== RENDER PORTFOLIO =====
-    const grid = document.getElementById('portfolioGrid');
-    const empty = document.getElementById('portfolioEmpty');
+let currentService = "";
+let currentPackageIndex = 0;
+let currentOrderId = "";
 
-    function renderPortfolio() {
-        grid.innerHTML = '';
-        if (portfolioItems.length === 0) {
-            empty.style.display = 'block';
-            return;
-        }
-        empty.style.display = 'none';
-        portfolioItems.forEach((item, index) => {
-            const el = document.createElement('div');
-            el.className = 'portfolio-item';
-            el.innerHTML = `
-                <div class="portfolio-item-img">
-                    ${item.src
-                        ? `<img src="${item.src}" alt="${item.alt || item.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'portfolio-item-img-placeholder\\'>Karya ${index+1}</div>'">`
-                        : `<div class="portfolio-item-img-placeholder">Karya ${index+1}</div>`
-                    }
-                </div>
-                <div class="portfolio-item-info">
-                    <h4>${item.title}</h4>
-                    <p>${item.desc}</p>
-                </div>`;
-            el.addEventListener('click', () => openImageModal(item));
-            grid.appendChild(el);
-        });
-    }
+const rupiah = (n) => new Intl.NumberFormat("id-ID", {
+  style: "currency",
+  currency: "IDR",
+  maximumFractionDigits: 0
+}).format(n).replace("IDR", "Rp");
 
-    function openImageModal(item) {
-        const overlay = document.createElement('div');
-        overlay.className = 'image-modal-overlay';
-        overlay.innerHTML = `
-            <div class="image-modal-content">
-                <button class="image-modal-close" aria-label="Tutup">&times;</button>
-                <img src="${item.src}" alt="${item.alt}" class="image-modal-img">
-                <div class="image-modal-caption"><h3>${item.title}</h3><p>${item.desc}</p></div>
-            </div>`;
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay || e.target.classList.contains('image-modal-close')) overlay.remove();
-        });
-        document.body.appendChild(overlay);
-        const onKey = (e) => { if (e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', onKey); } };
-        document.addEventListener('keydown', onKey);
-    }
+function renderServices() {
+  const grid = document.getElementById("serviceGrid");
+  grid.innerHTML = "";
+  Object.keys(catalog).forEach(service => {
+    const [num, icon, desc] = serviceMeta[service];
+    const card = document.createElement("article");
+    card.className = "service-card";
+    card.innerHTML = `
+      <div class="service-num">${num}</div>
+      <div class="service-icon">${icon}</div>
+      <h3>${service}</h3>
+      <p>${desc}</p>
+      <ul>
+        <li>Brief terstruktur</li>
+        <li>Harga otomatis</li>
+        <li>Workflow project jelas</li>
+      </ul>
+      <div class="service-price">Mulai ${rupiah(catalog[service][0][1])} <small>/ project</small></div>
+      <button class="btn btn-primary" onclick="openOrder('${service}')">Pilih Paket →</button>
+    `;
+    grid.appendChild(card);
+  });
+}
 
-    renderPortfolio();
+function openOrder(service) {
+  currentService = service;
+  currentPackageIndex = 0;
+  document.getElementById("selectedService").textContent = service;
+  document.getElementById("overlay").classList.add("show");
+  document.body.style.overflow = "hidden";
 
-    // ===== WHATSAPP BRIEF MODAL =====
-    const modal = document.getElementById('modal');
-    const form = document.getElementById('briefForm');
+  document.getElementById("orderScreen").style.display = "block";
+  document.getElementById("paymentScreen").classList.remove("show");
+  document.getElementById("successScreen").classList.remove("show");
 
-    window.openForm = function (service) {
-        document.getElementById('serviceName').textContent = service;
-        document.getElementById('service').value = service;
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
+  document.querySelectorAll(".addon input").forEach(x => x.checked = false);
+
+  renderPackages();
+  updateSummary();
+}
+
+function closeOrder() {
+  document.getElementById("overlay").classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+function renderPackages() {
+  const grid = document.getElementById("packageGrid");
+  grid.innerHTML = "";
+  catalog[currentService].forEach((pkg, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "package" + (index === currentPackageIndex ? " selected" : "");
+    button.innerHTML = `
+      <b>${pkg[0]}</b>
+      <strong>${rupiah(pkg[1])}</strong>
+      <small>${pkg[2]}</small>
+    `;
+    button.onclick = () => {
+      currentPackageIndex = index;
+      renderPackages();
+      updateSummary();
     };
-    window.closeForm = function () {
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
-    };
+    grid.appendChild(button);
+  });
+}
 
-    document.querySelectorAll('.buy').forEach(btn => {
-        btn.addEventListener('click', () => openForm(btn.dataset.service));
-    });
-    modal.addEventListener('click', e => { if (e.target === modal) closeForm(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeForm(); });
+function getSelectedAddons() {
+  return [...document.querySelectorAll(".addon input:checked")].map(x => ({
+    name: x.dataset.name,
+    price: Number(x.value)
+  }));
+}
 
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        const data = new FormData(form);
-        const msg =
-`Halo AI Design Studio 👋
+function getTotal() {
+  let total = catalog[currentService][currentPackageIndex][1];
+  getSelectedAddons().forEach(a => total += a.price);
+  return total;
+}
 
-Saya ingin memesan / konsultasi desain.
+function updateSummary() {
+  const pkg = catalog[currentService][currentPackageIndex];
+  const addons = getSelectedAddons();
+  document.getElementById("summaryPackage").textContent = `${pkg[0]} — ${rupiah(pkg[1])}`;
+  document.getElementById("summaryAddon").textContent = addons.length ? addons.map(a => a.name).join(", ") : "Tidak ada";
+  document.getElementById("summaryTotal").textContent = rupiah(getTotal());
+}
 
-LAYANAN
-${data.get('service')}
+document.querySelectorAll(".addon input").forEach(x => x.addEventListener("change", updateSummary));
 
-DATA KLIEN
-Nama: ${data.get('name')}
-WhatsApp: ${data.get('phone')}
-Email: ${data.get('email') || '-'}
-Brand: ${data.get('brand')}
-Jenis bisnis: ${data.get('business') || '-'}
-Budget: ${data.get('budget')}
+document.getElementById("orderForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-BRIEF PROJECT
-${data.get('brief')}
+  currentOrderId = "DS-" + new Date().getFullYear() + "-" + String(Math.floor(Math.random() * 99999)).padStart(5, "0");
 
-REFERENSI
-${data.get('reference') || '-'}
+  const pkg = catalog[currentService][currentPackageIndex];
+  const total = getTotal();
 
-Mohon info langkah selanjutnya. Terima kasih.`;
-        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
-        closeForm();
-    });
+  document.getElementById("orderScreen").style.display = "none";
+  document.getElementById("paymentScreen").classList.add("show");
 
+  document.getElementById("paymentOrderId").textContent = currentOrderId;
+  document.getElementById("payService").textContent = currentService;
+  document.getElementById("payPackage").textContent = pkg[0];
+  document.getElementById("payTotal").textContent = rupiah(total);
 });
+
+function backToOrder() {
+  document.getElementById("paymentScreen").classList.remove("show");
+  document.getElementById("orderScreen").style.display = "block";
+}
+
+function simulatePayment(method) {
+  document.getElementById("paymentScreen").classList.remove("show");
+  document.getElementById("successScreen").classList.add("show");
+  document.getElementById("successOrderId").textContent = currentOrderId;
+  console.log("Payment simulated:", { method, orderId: currentOrderId, service: currentService, total: getTotal() });
+}
+
+function finishOrder() {
+  closeOrder();
+  document.getElementById("orderForm").reset();
+}
+
+document.getElementById("overlay").addEventListener("click", e => {
+  if (e.target.id === "overlay") closeOrder();
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeOrder();
+});
+
+renderServices();
