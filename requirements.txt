@@ -1,0 +1,2 @@
+# AI Design Studio - cloud deployment config
+# Server pakai Python stdlib aja (no pip deps), file ini cuma penanda.

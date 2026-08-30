@@ -25,7 +25,9 @@ from urllib.parse import urlparse, parse_qs
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ORDERS_DIR = os.path.join(HERE, "assets", "orders")
-PORT = 7000
+
+# Port: cloud (Railway/Render) kirim lewat env PORT, lokal default 7000
+PORT = int(os.environ.get("PORT", 7000))
 
 # Mapping nama service dari landing page -> nama di dashboard (spy konsisten)
 SERVICE_MAP = {
@@ -100,7 +102,8 @@ def save_order(order):
 
 # ---- Static file serving (biar 1 server, no CORS) ----
 STATIC_DIR = os.path.join(HERE)  # root = folder AI Design Studio
-DASHBOARD_FILE = os.path.join("D:/Hermes Agent", "Dashboard Design Studio V2.html")
+# nama file dashboard di dalam folder project (biar ke-deploy ke cloud)
+DASHBOARD_FILE = os.path.join(HERE, "Dashboard.html")
 
 MIME = {
     ".html": "text/html; charset=utf-8",

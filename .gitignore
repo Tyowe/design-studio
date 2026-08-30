@@ -1,0 +1,15 @@
+# Jangan push data order lokal (nanti dibuat otomatis di cloud)
+assets/orders/*.json
+assets/orders/*_concepts.md
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# test artifacts
+test_*.js
+dash_test.js

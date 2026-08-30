@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Design Studio Dashboard</title>
+<style>
+:root{--bg:#f5f6f8;--panel:#fff;--dark:#121417;--muted:#7c828d;--line:#e6e8ec;--purple:#7257f5;--green:#1f9d6a;--amber:#d88712;--red:#d84d4d}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:#15171b}
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}.side{background:#121417;color:white;padding:22px 16px;display:flex;flex-direction:column}
+.brand{display:flex;gap:12px;align-items:center;margin-bottom:28px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#8f79ff,#5b3df5);display:grid;place-items:center;font-weight:800}
+.brand b{display:block;font-size:14px}.brand small{color:#8f959f}.nav button{width:100%;text-align:left;border:0;background:none;color:#adb2bb;padding:12px 13px;border-radius:11px;font-weight:700;margin-bottom:6px}
+.nav button.active,.nav button:hover{background:#24272c;color:white}.sidefooter{margin-top:auto;background:#1c1f23;border:1px solid #2f3338;padding:12px;border-radius:12px;font-size:12px}
+.main{padding:28px 32px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.eyebrow{font-size:11px;letter-spacing:.14em;color:#9196a0;font-weight:800;margin:0 0 5px}.top h1{margin:0;font-size:29px}.actions{display:flex;gap:9px}
+.btn{border:0;border-radius:10px;padding:10px 13px;font-weight:800;cursor:pointer}.btn.dark{background:#121417;color:#fff}.btn.light{background:#fff;border:1px solid var(--line)}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:13px;margin-bottom:17px}.metric{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}.metric span{font-size:12px;color:var(--muted);font-weight:700}.metric strong{display:block;font-size:25px;margin-top:9px}
+.grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}.ph{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.ph h3{margin:0;font-size:14px}
+table{width:100%;border-collapse:collapse}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;font-size:12px}th{font-size:10px;color:#8f949c;letter-spacing:.05em}
+.badge{padding:5px 8px;border-radius:999px;font-size:10px;font-weight:800;display:inline-block}.green{background:#e9f8f1;color:var(--green)}.amber{background:#fff4df;color:var(--amber)}.purple{background:#eeeaff;color:#6848e8}.red{background:#fff0f0;color:var(--red)}.gray{background:#f0f1f3;color:#717781}
+.attn{padding:15px}.attn div{background:#f7f8fa;border-radius:11px;padding:12px;margin-bottom:9px;display:flex;justify-content:space-between;font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:16px}.card h3{margin:0 0 7px;font-size:15px}.meta{font-size:12px;color:var(--muted);line-height:1.6}
+.kanban{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:12px;overflow:auto}.col{background:#eceef2;border-radius:14px;padding:11px;min-height:380px}.col>h3{font-size:11px;color:#666c76}.job{background:#fff;border:1px solid var(--line);padding:13px;border-radius:12px;margin-bottom:9px}
+.hermes{background:linear-gradient(135deg,#121417,#262a33);color:white;border-radius:18px;padding:20px;margin-bottom:15px}.progress{height:8px;background:#343943;border-radius:999px;overflow:hidden;margin:10px 0}.progress i{display:block;height:100%;background:linear-gradient(90deg,#8067ff,#b9adff)}
+.hidden{display:none!important}.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:grid;place-items:center;padding:20px}.modalbox{background:#fff;width:min(760px,100%);border-radius:18px;padding:20px;max-height:90vh;overflow:auto}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form label{font-size:12px;font-weight:700;display:flex;flex-direction:column;gap:6px}.form input,.form select,.form textarea{padding:10px;border:1px solid var(--line);border-radius:9px}.span{grid-column:span 2}
+@media(max-width:900px){.metrics{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.app{grid-template-columns:1fr}.side{min-height:auto}.metrics,.cards{grid-template-columns:1fr}.main{padding:18px}.top{align-items:flex-start;flex-direction:column;gap:12px}.form{grid-template-columns:1fr}.span{grid-column:span 1}}
+
+.login-screen{
+  position:fixed; inset:0; z-index:9999;
+  background:#101215;
+  display:grid; place-items:center;
+  padding:20px;
+}
+.login-card{
+  width:min(420px,100%);
+  background:#17191d;
+  border:1px solid #2f3339;
+  color:#fff;
+  border-radius:20px;
+  padding:28px;
+  box-shadow:0 24px 60px rgba(0,0,0,.35);
+}
+.login-brand{
+  display:flex; align-items:center; gap:12px; margin-bottom:24px;
+}
+.login-card h1{margin:0 0 8px;font-size:28px}
+.login-card p{margin:0 0 22px;color:#959ba5;font-size:13px;line-height:1.6}
+.login-card label{display:flex;flex-direction:column;gap:7px;margin-bottom:13px;font-size:12px;font-weight:700;color:#c7cbd2}
+.login-card input{
+  width:100%; padding:12px 13px; border-radius:10px;
+  border:1px solid #363a41; background:#101215; color:#fff;
+  outline:none;
+}
+.login-card input:focus{border-color:#7257f5}
+.login-card .login-btn{
+  width:100%; margin-top:5px; padding:12px 14px;
+  border:0; border-radius:10px; font-weight:800; cursor:pointer;
+  background:linear-gradient(135deg,#8f79ff,#5b3df5); color:#fff;
+}
+.login-error{
+  display:none; margin:0 0 14px; padding:10px 12px;
+  background:#321b20; border:1px solid #5c2931; color:#ffb4bc;
+  border-radius:9px; font-size:12px;
+}
+.login-note{margin-top:14px!important;font-size:11px!important;color:#6f7580!important}
+.app.locked{display:none}
+
+
+.btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+  filter:grayscale(.2);
+}
+.detail-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.detail-box{
+  background:#f7f8fa;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:13px;
+}
+.detail-box small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-bottom:5px;
+}
+.detail-box strong,.detail-box span{
+  font-size:13px;
+  line-height:1.6;
+}
+.detail-wide{grid-column:span 2}
+@media(max-width:700px){
+  .detail-grid{grid-template-columns:1fr}
+  .detail-wide{grid-column:span 1}
+}
+
+</style>
+</head>
+<body>
+
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="login-brand">
+      <div class="logo">AI</div>
+      <div><b>DESIGN STUDIO</b><small style="display:block;color:#8f959f;margin-top:3px">Secure Dashboard</small></div>
+    </div>
+    <h1>Welcome back.</h1>
+    <p>Login untuk mengakses order, brief, payment, client, project, dan Hermes Agent.</p>
+
+    <div class="login-error" id="loginError">Email atau password salah.</div>
+
+    <form id="loginForm">
+      <label>Email
+        <input type="email" id="loginEmail" value="admin@studio.local" required>
+      </label>
+      <label>Password
+        <input type="password" id="loginPassword" placeholder="Masukkan password" required>
+      </label>
+      <button type="submit" class="login-btn">Login to Dashboard</button>
+    </form>
+
+    <p class="login-note">Standalone demo login. Untuk sistem online nanti login harus dipindahkan ke backend.</p>
+  </div>
+</div>
+
+<div class="app locked" id="appRoot">
+<aside class="side">
+  <div class="brand"><div class="logo">AI</div><div><b>DESIGN STUDIO</b><small>Control Center</small></div></div>
+  <div class="nav">
+    <button class="active" data-v="dashboard">⌂ Dashboard</button>
+    <button data-v="orders">▦ Orders</button>
+    <button data-v="briefs">◫ Briefs</button>
+    <button data-v="projects">◆ Projects</button>
+    <button data-v="payments">◉ Payments</button>
+    <button data-v="clients">♙ Clients</button>
+    <button data-v="hermes">✦ Hermes Agent</button>
+  </div>
+  <div class="sidefooter">● Hermes Bridge<br><span style="color:#90969f">Demo / Local mode</span></div>
+</aside>
+
+<main class="main">
+  <div class="top">
+    <div><p class="eyebrow">AI DESIGN STUDIO</p><h1 id="title">Dashboard</h1><span id="bridgeStatus" style="font-size:12px;color:#90969f">● …</span></div>
+    <div class="actions"><button class="btn light" onclick="resetDemo()">Reset Demo</button><button class="btn light" onclick="logout()">Logout</button><button class="btn dark" onclick="openModal()">＋ New Order</button></div>
+  </div>
+  <section id="root"></section>
+</main>
+</div>
+
+<div class="modal hidden" id="modal">
+  <div class="modalbox">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px"><h2 style="margin:0">Order Baru</h2><button class="btn light" onclick="closeModal()">×</button></div>
+    <form id="form" class="form">
+      <label>Client<input name="client" required></label>
+      <label>Brand<input name="brand"></label>
+      <label>Service<select name="service">
+<option>Logo</option>
+<option>Packaging</option>
+<option>Poster</option>
+<option>Social Media</option>
+<option>3D Mockup</option>
+<option>Custom</option>
+</select></label>
+      <label>Package<select name="package"><option>Basic</option><option selected>Professional</option><option>Premium</option></select></label>
+      <label>Price<input type="number" name="price" value="1500000"></label>
+      <label>Payment<select name="payment"><option>UNPAID</option><option>PAID</option></select></label>
+      <label class="span">Objective<textarea name="objective"></textarea></label>
+      <label class="span">Style Direction<textarea name="style"></textarea></label>
+      <div class="span" style="display:flex;justify-content:flex-end;gap:8px"><button type="button" class="btn light" onclick="closeModal()">Cancel</button><button class="btn dark">Create Order</button></div>
+    </form>
+  </div>
+</div>
+
+
+<div class="modal hidden" id="briefDetailModal">
+  <div class="modalbox">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px">
+      <div>
+        <p class="eyebrow" style="margin-bottom:5px">CLIENT BRIEF</p>
+        <h2 id="briefDetailTitle" style="margin:0">Detail Brief</h2>
+      </div>
+      <button class="btn light" onclick="closeBriefDetail()">×</button>
+    </div>
+    <div id="briefDetailContent"></div>
+  </div>
+</div>
+
+<script>
+const demo=[
+{id:1,code:'ADS-2026-0001',client:'Kopi Nusa',brand:'Kopi Nusa',service:'Logo',package:'Professional',price:1500000,payment:'PAID',status:'CONCEPT',hermes:'WORKING',progress:72,objective:'Modern coffee identity',style:'Minimal, premium, warm'},
+{id:2,code:'ADS-2026-0002',client:'Mami Cookies',brand:'Mami Cookies',service:'Packaging',package:'Premium',price:2800000,payment:'PAID',status:'BRIEF REVIEW',hermes:'QUEUED',progress:10,objective:'Premium cookie packaging',style:'Fun premium'},
+{id:3,code:'ADS-2026-0003',client:'Resto Kita',brand:'Resto Kita',service:'Poster',package:'Basic',price:650000,payment:'UNPAID',status:'NEW',hermes:'WAITING',progress:0,objective:'Promo poster',style:'Bold'},
+{id:4,code:'ADS-2026-0004',client:'Nutrivo',brand:'Nutrivo',service:'Social Media',package:'Professional',price:900000,payment:'PAID',status:'PRODUCTION',hermes:'WORKING',progress:48,objective:'Monthly social media campaign',style:'Clean sporty'},
+{id:5,code:'ADS-2026-0005',client:'Oat Daily',brand:'Oat Daily',service:'3D Mockup',package:'Basic',price:450000,payment:'PAID',status:'CLIENT REVIEW',hermes:'COMPLETED',progress:100,objective:'Realistic packaging mockup',style:'Studio lighting'},
+{id:6,code:'ADS-2026-0006',client:'Studio Kita',brand:'Studio Kita',service:'Custom',package:'Custom',price:1200000,payment:'UNPAID',status:'NEW',hermes:'WAITING',progress:0,objective:'Custom company profile design',style:'Modern editorial'}
+];
+const BRIDGE = "/api/orders";
+const STATUS_FLOW = ["NEW","PAID","BRIEF REVIEW","CONCEPT","AWAITING_CLIENT","PRODUCTION","QC","CLIENT REVIEW","REVISION","DELIVERED"];
+// persen otomatis tiap tahap pipeline
+const STATUS_PROGRESS = {"NEW":0,"PAID":10,"BRIEF REVIEW":20,"CONCEPT":40,"AWAITING_CLIENT":50,"PRODUCTION":70,"QC":85,"CLIENT REVIEW":90,"REVISION":95,"DELIVERED":100};
+let orders = [];
+let demoFallback = false;
+
+async function loadOrders() {
+  try {
+    const r = await fetch(BRIDGE);
+    const data = await r.json();
+    orders = data.orders || [];
+    demoFallback = false;
+    document.getElementById('bridgeStatus') && (document.getElementById('bridgeStatus').textContent = '● Live');
+  } catch (e) {
+    // server belum jalan -> pakai demo data lokal (offline mode)
+    if (!orders.length) orders = JSON.parse(JSON.stringify(demo));
+    demoFallback = true;
+    document.getElementById('bridgeStatus') && (document.getElementById('bridgeStatus').textContent = '● Offline (server mati)');
+  }
+  if (!orders.length && !demoFallback) {
+    // server jalan tapi belum ada order -> tetap pakai demo biar nggak kosong
+    orders = JSON.parse(JSON.stringify(demo));
+    demoFallback = true;
+    document.getElementById('bridgeStatus') && (document.getElementById('bridgeStatus').textContent = '● Live (kosong)');
+  }
+  try {
+    render(current);
+  } catch (err) {
+    console.error('render error:', err);
+    const root = document.getElementById('root');
+    if (root) root.innerHTML = '<div style="padding:24px;color:#c0392b">Render error: ' + (err && err.message ? err.message : err) + '</div>';
+  }
+}
+
+function save() {
+  // kalau mode server: tiap perubahan (status/ payment) di-PUT ke server
+  if (demoFallback) {
+    localStorage.setItem('ads-orders', JSON.stringify(orders));
+  } else {
+    orders.forEach(o => pushOrder(o.id, o));
+  }
+}
+
+async function pushOrder(id, o) {
+  try {
+    await fetch(BRIDGE + "/" + id, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        status: o.status, hermes: o.hermes, progress: o.progress,
+        payment: o.payment, price: o.price, _by: "dashboard"
+      })
+    });
+  } catch (e) { /* ignore network error */ }
+}
+function badge(v){let c='gray';if(['PAID','COMPLETED'].includes(v))c='green';else if(['UNPAID','ERROR'].includes(v))c='red';else if(['WORKING','PRODUCTION','CONCEPT','CLIENT REVIEW'].includes(v))c='purple';else if(['QUEUED','BRIEF REVIEW','REVISION'].includes(v))c='amber';return `<span class="badge ${c}">${v}</span>`}
+function rp(n){try{n=Number(n)||0}catch(e){n=0}return 'Rp '+n.toLocaleString('id-ID');}
+function metrics(){return {new:orders.filter(x=>x.status==='NEW').length,active:orders.filter(x=>['BRIEF REVIEW','CONCEPT','PRODUCTION'].includes(x.status)).length,approval:orders.filter(x=>x.status==='CLIENT REVIEW').length,rev:orders.filter(x=>x.status==='REVISION').length,revn:orders.filter(x=>x.payment==='PAID').reduce((a,b)=>a+b.price,0)}}
+function dashboard(){let m=metrics();return `<div class="metrics">
+<div class="metric"><span>New Orders</span><strong>${m.new}</strong></div><div class="metric"><span>Active Projects</span><strong>${m.active}</strong></div><div class="metric"><span>Waiting Approval</span><strong>${m.approval}</strong></div><div class="metric"><span>Revisions</span><strong>${m.rev}</strong></div><div class="metric"><span>Revenue</span><strong style="font-size:18px">${rp(m.revn)}</strong></div></div>
+<div class="grid"><div class="panel"><div class="ph"><h3>Recent Orders</h3></div><table><thead><tr><th>Order</th><th>Client</th><th>Service</th><th>Payment</th><th>Hermes</th></tr></thead><tbody>${orders.map(o=>`<tr><td><b>${o.code}</b></td><td>${o.client}</td><td>${o.service}</td><td>${badge(o.payment)}</td><td>${badge(o.hermes)}</td></tr>`).join('')}</tbody></table></div>
+<div class="panel"><div class="ph"><h3>Your Attention</h3></div><div class="attn"><div><span>Need approval</span><b>${m.approval}</b></div><div><span>Client revisions</span><b>${m.rev}</b></div><div><span>Unpaid invoices</span><b>${orders.filter(x=>x.payment!=='PAID').length}</b></div><div><span>Hermes errors</span><b>${orders.filter(x=>x.hermes==='ERROR').length}</b></div></div></div></div>`}
+function ordersView(){return `<div class="panel"><table><thead><tr><th>Order</th><th>Client</th><th>Service</th><th>Package</th><th>Price</th><th>Payment</th><th>Status</th><th>Hermes</th><th>Action</th></tr></thead><tbody>${orders.map(o=>`<tr>
+<td><b>${o.code}</b></td>
+<td>${o.client}</td>
+<td>${o.service}</td>
+<td>${o.package}</td>
+<td>${rp(o.price)}</td>
+<td>${badge(o.payment)}</td>
+<td>${badge(o.status)}</td>
+<td>${badge(o.hermes)}</td>
+<td>
+  <button
+    class="btn light"
+    onclick="sendHermes('${o.id}')"
+    ${o.payment!=='PAID'?'disabled title="Payment harus PAID sebelum dikirim ke Hermes"':''}>
+    ${o.payment==='PAID'?'Send to Hermes':'Waiting Payment'}
+  </button>
+</td>
+</tr>`).join('')}</tbody></table></div>`}
+function briefs(){return `<div class="cards">${orders.map(o=>`<div class="card">
+<p class="eyebrow">${o.code}</p>
+<h3>${o.brand}</h3>
+<div class="meta">
+<b>Client:</b> ${o.client}<br>
+<b>Service:</b> ${o.service}<br>
+<b>Package:</b> ${o.package}<br>
+<b>Payment:</b> ${badge(o.payment)}
+</div>
+<div style="margin-top:12px">
+  <button class="btn light" onclick="openBriefDetail('${o.id}')">View Detail</button>
+</div>
+</div>`).join('')}</div>`}
+function projects(){let cols=[['NEW','New'],['BRIEF REVIEW','Brief Review'],['PRODUCTION','Production'],['CLIENT REVIEW','Client Review']];return `<div class="kanban">${cols.map(([k,l])=>`<div class="col"><h3>${l}</h3>${orders.filter(o=>k==='PRODUCTION'?['PRODUCTION','CONCEPT'].includes(o.status):o.status===k).map(o=>`<div class="job"><b>${o.code}</b><div class="meta">${o.client}<br>${o.service}</div><div style="margin-top:8px">${badge(o.hermes)}</div></div>`).join('')||'<div class="meta">No project</div>'}</div>`).join('')}</div>`}
+function payments(){return `<div class="panel"><table><thead><tr><th>Order</th><th>Client</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead><tbody>${orders.map(o=>`<tr><td><b>${o.code}</b></td><td>${o.client}</td><td>${rp(o.price)}</td><td>${badge(o.payment)}</td><td>${o.payment!=='PAID'?`<button class="btn light" onclick="markPaid('${o.id}')">Mark Paid</button>`:''}</td></tr>`).join('')}</tbody></table></div>`}
+function clients(){let map={};orders.forEach(o=>{map[o.client]??={name:o.client,count:0,value:0};map[o.client].count++;if(o.payment==='PAID')map[o.client].value+=o.price});return `<div class="cards">${Object.values(map).map(c=>`<div class="card"><h3>${c.name}</h3><div class="meta">Total Orders: ${c.count}<br>Lifetime Value: ${rp(c.value)}</div></div>`).join('')}</div>`}
+function hermes(){let a=orders.find(o=>o.hermes==='WORKING')||orders[0];return `<div class="hermes"><p class="eyebrow" style="color:#9aa0aa">${a.code}</p><h2 style="margin:0">${a.service} — ${a.client}</h2><div class="progress"><i style="width:${a.progress}%"></i></div><div class="meta" style="color:#c1c5cc">Progress ${a.progress}% · ${a.hermes}</div></div><div class="cards">${orders.map(o=>`<div class="card"><p class="eyebrow">${o.code}</p><h3>${o.client}</h3><div class="meta">${o.service}<br>Status: ${o.hermes}</div><div class="progress" style="background:#eceef2"><i style="width:${o.progress}%"></i></div></div>`).join('')}</div>`}
+const views={dashboard,orders:ordersView,briefs,projects,payments,clients,hermes};let current='dashboard';
+function render(v=current){current=v;document.getElementById('root').innerHTML=views[v]();document.getElementById('title').textContent={dashboard:'Dashboard',orders:'Orders',briefs:'Briefs',projects:'Projects',payments:'Payments',clients:'Clients',hermes:'Hermes Agent'}[v]}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(b.dataset.v)});
+function openModal(){document.getElementById('modal').classList.remove('hidden')}function closeModal(){document.getElementById('modal').classList.add('hidden')}
+document.getElementById('form').onsubmit=e=>{e.preventDefault();let f=new FormData(e.target),id=Date.now(),num=orders.length+1;orders.push({id,code:`ADS-2026-${String(num).padStart(4,'0')}`,client:f.get('client'),brand:f.get('brand')||f.get('client'),service:f.get('service'),package:f.get('package'),price:Number(f.get('price')||0),payment:f.get('payment'),status:'NEW',hermes:'WAITING',progress:0,objective:f.get('objective'),style:f.get('style')});save();closeModal();e.target.reset();render('orders')}
+
+function openBriefDetail(id){
+  const o=orders.find(x=>x.id===id);
+  if(!o)return;
+
+  document.getElementById('briefDetailTitle').textContent=`${o.code} — ${o.brand}`;
+
+  document.getElementById('briefDetailContent').innerHTML=`
+    <div class="detail-grid">
+      <div class="detail-box">
+        <small>Client</small>
+        <strong>${o.client||'-'}</strong>
+      </div>
+
+      <div class="detail-box">
+        <small>Brand</small>
+        <strong>${o.brand||'-'}</strong>
+      </div>
+
+      <div class="detail-box">
+        <small>Service</small>
+        <span>${o.service||'-'}</span>
+      </div>
+
+      <div class="detail-box">
+        <small>Package</small>
+        <span>${o.package||'-'}</span>
+      </div>
+
+      <div class="detail-box">
+        <small>Price</small>
+        <span>${rp(o.price)}</span>
+      </div>
+
+      <div class="detail-box">
+        <small>Payment</small>
+        <span>${badge(o.payment)}</span>
+      </div>
+
+      <div class="detail-box">
+        <small>Project Status</small>
+        <span>${badge(o.status)}</span>
+      </div>
+
+      <div class="detail-box">
+        <small>Hermes Status</small>
+        <span>${badge(o.hermes)}</span>
+      </div>
+
+      <div class="detail-box detail-wide">
+        <small>Objective</small>
+        <span>${o.objective||'-'}</span>
+      </div>
+
+      <div class="detail-box detail-wide">
+        <small>Style Direction</small>
+        <span>${o.style||'-'}</span>
+      </div>
+
+      <div class="detail-box detail-wide" style="background:#f7f8fa;border:1px solid #e3e6ec;border-radius:10px;padding:14px">
+        <small>Update Status</small>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <label style="font-size:12px;color:#6b7280">Project:
+            <select id="briefStatusSel" onchange="updateStatus('${o.id}','status',this.value)" style="padding:6px 8px;border-radius:8px;border:1px solid #d1d5db;font-size:13px">
+              ${STATUS_FLOW.map(s=>`<option value="${s}" ${o.status===s?'selected':''}>${s}</option>`).join('')}
+            </select>
+          </label>
+          <label style="font-size:12px;color:#6b7280">Hermes:
+            <select id="briefHermesSel" onchange="updateStatus('${o.id}','hermes',this.value)" style="padding:6px 8px;border-radius:8px;border:1px solid #d1d5db;font-size:13px">
+              ${['WAITING','QUEUED','WORKING','COMPLETED','ERROR'].map(s=>`<option value="${s}" ${o.hermes===s?'selected':''}>${s}</option>`).join('')}
+            </select>
+          </label>
+        </div>
+        <div style="margin-top:10px">
+          <label style="font-size:12px;color:#6b7280">Progress: <b id="briefProgVal">${o.progress}</b>%</label>
+          <input type="range" min="0" max="100" value="${o.progress}" oninput="document.getElementById('briefProgVal').textContent=this.value" onchange="updateStatus('${o.id}','progress',Number(this.value))" style="width:100%">
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('briefDetailModal').classList.remove('hidden');
+}
+
+function closeBriefDetail(){
+  document.getElementById('briefDetailModal').classList.add('hidden');
+}
+
+function markPaid(id){let o=orders.find(x=>x.id===id);if(o)o.payment='PAID';save();render('payments')}
+function updateStatus(id, field, value){
+  let o=orders.find(x=>x.id===id);
+  if(!o)return;
+  o[field]=value;
+  if(field==='status'){
+    // kalau user belum pernah set progress manual, otomatis ngikut tahap
+    if(!o.manualProgress){
+      o.progress = STATUS_PROGRESS[value] ?? o.progress;
+    }
+    const prog = document.getElementById('briefProgVal');
+    const slider = document.querySelector('input[type=range]');
+    if(prog) prog.textContent = o.progress;
+    if(slider) slider.value = o.progress;
+  }
+  if(field==='progress'){o.progress=Number(value);o.manualProgress=true;}
+  save();
+  render(current);
+  alert((field==='status'?'Status':'Hermes')+' diupdate ke: '+value+' (progress '+o.progress+'%)');
+}
+function sendHermes(id){
+  let o=orders.find(x=>x.id===id);
+  if(!o)return;
+  if(o.payment!=='PAID'){alert('Payment masih UNPAID. Tombol Hermes hanya aktif setelah pembayaran berstatus PAID.');return}
+  o.hermes='QUEUED';
+  o.status='BRIEF REVIEW';
+  o.progress=Math.max(o.progress,5);
+  save();
+  if(demoFallback){
+    alert('Demo mode (server belum jalan): order masuk antrian. Jalankan server.py untuk sinkron nyata.');
+  } else {
+    alert('Order '+o.code+' dikirim ke Hermes Agent. Cronjob akan memproses otomatis.');
+  }
+  render(current);
+}
+function resetDemo(){
+  if(demoFallback){localStorage.removeItem('ads-orders');orders=JSON.parse(JSON.stringify(demo));save();render(current);}
+  else{alert('Mode server aktif — reset dilakukan dengan menghapus file di assets/orders/. Buka folder tersebut untuk hapus order.');}
+}
+
+const AUTH_EMAIL='admin@studio.local';
+const AUTH_PASSWORD='studio123';
+
+function showDashboard(){
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('appRoot').classList.remove('locked');
+  loadOrders();
+}
+function showLogin(){
+  document.getElementById('appRoot').classList.add('locked');
+  document.getElementById('loginScreen').style.display='grid';
+  document.getElementById('loginPassword').value='';
+}
+function logout(){
+  sessionStorage.removeItem('ads-auth');
+  showLogin();
+}
+document.getElementById('loginForm').onsubmit=e=>{
+  e.preventDefault();
+  const email=document.getElementById('loginEmail').value.trim().toLowerCase();
+  const password=document.getElementById('loginPassword').value;
+  const error=document.getElementById('loginError');
+  if(email===AUTH_EMAIL && password===AUTH_PASSWORD){
+    sessionStorage.setItem('ads-auth','1');
+    error.style.display='none';
+    showDashboard();
+  }else{
+    error.style.display='block';
+  }
+};
+if(sessionStorage.getItem('ads-auth')==='1'){
+  showDashboard();
+}else{
+  showLogin();
+}
+
+loadOrders();
+setInterval(loadOrders, 15000); // auto-refresh tiap 15 detik
+</script>
+</body>
+</html>
