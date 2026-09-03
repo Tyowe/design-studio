@@ -287,7 +287,7 @@ class Handler(BaseHTTPRequestHandler):
 
 def main():
     ensure_dir()
-    server = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
+    server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     print(f"AI Design Studio Order Bridge jalan di http://localhost:{PORT}")
     print(f"Orders disimpan di: {ORDERS_DIR}")
     print("Tekan Ctrl+C untuk berhenti.")
