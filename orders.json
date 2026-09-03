@@ -1,0 +1,505 @@
+{
+  "orders": [
+    {
+      "id": "ORD-6DA41B1C",
+      "code": "ADS-2026-0001",
+      "client": "Test Client",
+      "phone": "08123456789",
+      "email": "test@mail.com",
+      "brand": "Kopi Test",
+      "service": "Logo",
+      "package": "Professional",
+      "price": 650000,
+      "payment": "PAID",
+      "status": "CONCEPT",
+      "hermes": "COMPLETED",
+      "progress": 40,
+      "objective": "Logo kopi susu kekinian, target anak muda",
+      "style": "minimalis premium",
+      "business": "",
+      "target": "",
+      "reference": "",
+      "created_at": "2026-08-30T00:57:32",
+      "updated_at": "2026-08-30T21:27:20",
+      "log": [
+        {
+          "at": "2026-08-30T00:57:32",
+          "by": "system",
+          "msg": "Order dibuat dari landing page"
+        },
+        {
+          "at": "2026-08-30T00:59:00",
+          "by": "hermes",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T01:21:09",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T11:52:11",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T11:57:19",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T12:04:20",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T12:04:25",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T12:04:29",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:26:57",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:27:04",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:27:11",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:27:20",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        }
+      ],
+      "analysis": "Brand 'Kopi Test' butuh logo kopi susu kekinian untuk anak muda, dengan gaya minimalis premium. Masalah utamanya: kategori kopi susu itu SANGAT sesak \u2014 Kopi Kenangan, Janji Jiwa, Fore Coffee, dll semua main di warna hangat + wordmark. Biar nggak tenggelam, logo harus punya personalitas sendiri tapi tetap clean.\n\nBRIEF LEMAH: field business, target detail, dan reference kosong. Ambil asumsi wajar \u2014 audiens anak muda (18\u201330, urban, Gen Z + millennial), kopi susu = fungsional (kafein) sekaligus sosial (hangout, konten, status). SARAN SEBELUM PRODUKSI: Tyo perlu klarifikasi 3 hal \u2014 (1) mau beda dari kompetitor atau ikut arus kekinian, (2) tone: elegan vs ramah/playful, (3) ada short-brand/panggilan? (mis. 'Test' atau 'KT').",
+      "concepts": [
+        {
+          "name": "Monogram Elegan",
+          "core": "Monogram 'KT' dibentuk jadi mark geometris minimalis + wordmark grotesk. Premium tapi ramah.",
+          "visual": "Monogram 'KT' dari stroke geometris; atau logotype 'KOPI TEST' lowercase. Lockup horizontal, icon opsional.",
+          "color": "Monokrom deep espresso (#2B2118) + cream (#F5EFE6), satu aksen tipis (teal/neon) untuk kesan kekinian.",
+          "typography": "Geometric grotesk modern (Futura/Inter-like), tight tracking, lowercase -> modern & percaya diri.",
+          "mood": "Tenang, bersih, confident, premium-yang-accessible.",
+          "layout": "Horizontal lockup; icon kecil di kiri atau di atas sebagai secondary.",
+          "reasoning": "Minimalis premium paling aman & timeless; gampang di merchandise & app icon. Cocok kalau brand mau kelihatan established.",
+          "strengths": "Clean, scalable, mudah diaplikasikan, terasa 'mahal' tanpa ribet.",
+          "weaknesses": "Bisa terasa generik kalau eksekusi typography-nya pasaran; risiko mirip kompetitor yang juga main wordmark."
+        },
+        {
+          "name": "Ikon Kekinian",
+          "core": "Icon focal yang playful & social \u2014 cangkir kopi + swirl susu / bean jadi smile atau speech-bubble. Ngomong langsung ke anak muda.",
+          "visual": "Icon bulat/rounded: cangkir dengan swirl susu, atau bean melengkung jadi senyum. Wordmark rounded sans di bawah/samping.",
+          "color": "Hangat & ekspresif: caramel (#C8772E) + cream + 1 pop color (coral #FF6B5E atau mint #4ECDC4) buat vibe kekinian.",
+          "typography": "Rounded sans (Poppins/Nunito-like) \u2014 friendly, approachable.",
+          "mood": "Enerjik, sosial, fun, mengundang \u2014 vibe hangout.",
+          "layout": "Icon di atas, wordmark di bawah (atau icon kiri + wordmark kanan).",
+          "reasoning": "Anak muda itu visual & sosial; icon kuat = mudah diingat & di-share. Bedalah dari kompetitor yang cuma wordmark.",
+          "strengths": "Catchy, memorable, Instagrammable, kuat di merchandise & sticker.",
+          "weaknesses": "Kalau terlalu playful bisa kelihatan 'murah'/less premium; butuh eksekusi rapi biar nggak childish."
+        },
+        {
+          "name": "Kraft Editorial",
+          "core": "Posisi craft/small-batch lewat badge/seal + serif display. Differensiasi: kebanyakan kopi susu pakai all-sans; serif kasih kesan premium artisanal.",
+          "visual": "Badge/stamp mark atau monogram serif; wordmark serif display + sans sekunder. Kesan 'kami serius soal kopi'.",
+          "color": "Earthy & sofistikated: matte black (#1A1A1A) + kraft/cream (#E8DFD0) + 1 aksen muted (terracotta #C65D3B atau olive #7A8450).",
+          "typography": "Modern serif (premium/editorial) dipasangkan sans clean untuk sekunder.",
+          "mood": "Artisanal, trustworthy, refined, tetap minimal.",
+          "layout": "Badge lockup (icon dalam lingkaran/segel) atau horizontal dengan serif wordmark.",
+          "reasoning": "Differensiasi nyata di kategori yang seragam. 'Premium' lewat editorial bukan lewat bling.",
+          "strengths": "Berbeda & berkesan, terasa exclusive, cocok untuk packaging & store signage.",
+          "weaknesses": "Serif bisa kurang 'kekinian' di mata Gen Z; butuh balancing biar nggak kelihatan tua/konservatif"
+        }
+      ],
+      "qc": "QC AWAL (sebelum produksi visual):\n\nKONTEN\n- Ejaan 'Kopi Test' konsisten di semua lockup\n- Tidak ada claim menyesatkan / kata terlarang\n- Tagline (jika ada) selaras brief\n\nVISUAL\n- Hierarchy jelas: icon vs wordmark tidak saling mendominasi\n- Alignment & spacing konsisten (grid)\n- Terbaca di ukuran kecil (favicon / app icon 32px)\n- Kontras cukup di mode terang & gelap\n- Komposisi seimbang, tidak clutter\n\nTEKNIS\n- Vektor murni (AI/SVG) \u2014 scalable tanpa lost quality\n- Palette maks 3 warna\n- Clear space / safe area didefinisikan\n- Export: SVG + PNG transparan (16/32/128/512) + PDF\n- Cek contrast ratio (WCAG) untuk aksesibilitas"
+    },
+    {
+      "id": "ORD-BE49D36F",
+      "code": "ADS-2026-0003",
+      "client": "tiyo",
+      "phone": "085745550831",
+      "email": "wicaksonotyo@gmail.com",
+      "brand": "okuki",
+      "service": "Logo",
+      "package": "Basic",
+      "price": 650000,
+      "payment": "PAID",
+      "status": "CONCEPT",
+      "hermes": "COMPLETED",
+      "progress": 40,
+      "objective": "a",
+      "style": "a",
+      "business": "a",
+      "target": "a",
+      "reference": "",
+      "created_at": "2026-08-30T01:22:33",
+      "updated_at": "2026-08-30T21:27:20",
+      "log": [
+        {
+          "at": "2026-08-30T01:22:33",
+          "by": "system",
+          "msg": "Order dibuat dari landing page"
+        },
+        {
+          "at": "2026-08-30T01:34:00",
+          "by": "hermes",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T11:52:11",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T11:57:19",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T12:04:20",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T12:04:25",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T12:04:29",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:26:57",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:27:04",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:27:11",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:27:20",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        }
+      ],
+      "concepts": [
+        {
+          "name": "okuki Wordmark - Friendly Rounded",
+          "core": "Wordmark lowercase \"okuki\" jadi hero. Letterform rounded-bold dengan satu detail karakter (cth. huruf 'u' dibentuk jadi loop/smile, atau dua 'o' jadi mata lucu). Logo = nama, kuat di feed & app icon.",
+          "visual": "Logotype hybrid lowercase, rounded sans bold. Satu secondary mark kecil (mis. monogram 'o' atau icon loop) untuk favicon.",
+          "color": "Asumsi awal - Coral hangat (#FF6B5E) + Off-white (#FFF6F0). GANTI sesuai brand.",
+          "typography": "Rounded bold sans (Quicksand/Fredoka-like) - ramah & modern.",
+          "mood": "Ramah, ceria, approachable, kekinian.",
+          "layout": "Horizontal lockup; wordmark hero, mark kecil secondary.",
+          "reasoning": "Paling aman & scalable buat brand baru; gampang di merch & app icon. Cocok kalau okuki brand lifestyle/kreatif muda.",
+          "strengths": "Clean, mudah dikenali, murah produksi, scalable.",
+          "weaknesses": "Kalau cuma wordmark bisa mirip kompetitor; butuh eksekusi letterform unik biar beda."
+        },
+        {
+          "name": "okuki Monogram - Geometric 'o'",
+          "core": "Mark geometris minimalis dari huruf 'o'/'k' - dua 'o' (okuki punya dua o) disusun jadi bentuk abstrak (lens, orbit, atau loop). Mark sebagai hero, wordmark sekunder.",
+          "visual": "Monogram geometrik (circle/loop) + wordmark grotesk. Lockup compact, kuat di ukuran kecil.",
+          "color": "Asumsi awal - Deep ink (#1A1A1A) + 1 aksen (neon-lime #D7FF4F atau electric blue). GANTI sesuai brand.",
+          "typography": "Geometric grotesk modern (Inter/Futura-like), lowercase, tight tracking.",
+          "mood": "Modern, confident, techy, minimal.",
+          "layout": "Mark kiri + wordmark kanan (atau mark di atas).",
+          "reasoning": "Cocok kalau okuki brand tech/app/SaaS muda - minimalis tapi berkarakter lewat 'play' pada huruf 'o'.",
+          "strengths": "Sangat scalable, distinctive, bagus di favicon, terasa 'mahal'.",
+          "weaknesses": "Minimalis = risiko terasa generik kalau eksekusi datar; butuh 1 detail unik biar beda."
+        },
+        {
+          "name": "okuki Badge - Craft/Editorial",
+          "core": "Badge/seal bulat + wordmark serif + pattern. Terasa 'brand lengkap' walau cuma Basic. Differensiasi lewat kesan artisanal.",
+          "visual": "Seal/badge (lingkaran, garis tepi), dalamnya wordmark + 1 ikon simpel. Plus pattern dot/garis buat aplikasi.",
+          "color": "Asumsi awal - Kraft/cream (#E8DFD0) + Espresso (#2B2118) + 1 aksen muted (terracotta). GANTI sesuai brand.",
+          "typography": "Modern serif display + sans sekunder.",
+          "mood": "Artisanal, trustworthy, refined, tetap minimal.",
+          "layout": "Badge lockup (wordmark dalam lingkaran) + pattern pendukung.",
+          "reasoning": "Cocok kalau okuki F&B/UMKM/kreatif yang mau kesan 'handcrafted'. Badge fleksibel buat packaging & signage.",
+          "strengths": "Berkesan 'lengkap', fleksibel, cocok kemasan & store signage.",
+          "weaknesses": "Badge berat di ukuran sangat kecil; butuh simplified mark untuk favicon."
+        }
+      ],
+      "analysis": "Brand \"okuki\" \u2014 order logo paket Basic dari klien tiyo.\n\n\u26a0\ufe0f BRIEF KOSONG / PLACEHOLDER: semua field (objective, style, business, target, reference) isinya cuma \"a\". Ini kemungkinan order testing atau brief belum diisi sama sekali. Tanpa konteks, desain nggak bisa di-grounding ke bisnis nyata \u2014 dan studio-soul jelas: design is communication before decoration.\n\nMASALAH KLIEN: Kami nggak tahu okuki itu apa. Kategori bisnis, audiens, dan kepribadian brand semuanya kosong. Logo butuh setidaknya TAHU mau dipakai buat apa supaya komunikasinya jalan.\n\nAUDIENS: belum diketahui (target = \"a\").\n\nPOSISI BRAND: belum diketahui. Nama \"okuki\" terdengar pendek, vowel-rich, agak playful, sedikit berkesan Japan-ish (oku = dalam/just, ki = pohon/semangat). Potensi brand muda & ekspresif \u2014 TAPI ini asumsi, bukan fakta brief.\n\nARAH DESAIN: Karena brief kosong, kami sengaja kasih 3 pendekatan BEDA yang masing-masing mengasumsikan kepribadian brand berbeda (playful lifestyle / tech-minimal / artisanal). Tujuannya: Tyo bisa langsung pilih arah, atau \u2014 lebih baik \u2014 lengkapi dulu 3 hal:\n(1) okuki itu bisnis apa? (F&B, app, fashion, kreatif studio?)\n(2) audiens & tone (muda/playful vs dewasa/premium)?\n(3) ada warna brand / reference?\n\n3 konsep di bawah pakai PALETTE & STYLE ASUMSI \u2014 ganti sesuai arah yang Tyo pilih. Jangan produksi visual sebelum brief diisi.",
+      "qc": "QC AWAL (sebelum produksi visual):\n\nKONTEN\n- Ejaan \"okuki\" konsisten di semua lockup & varian\n- Tidak ada claim menyesatkan / kata terlarang\n- Tagline (jika ada) selaras brief (brief masih kosong - perlu diisi)\n\nVISUAL\n- Hierarchy jelas: mark vs wordmark tidak saling mendominasi\n- Alignment & spacing konsisten (grid)\n- Terbaca di ukuran kecil (favicon / app icon 32px)\n- Kontras cukup (cek WCAG, ratio >= 3:1 elemen besar)\n- Komposisi seimbang, tidak clutter\n\nTEKNIS\n- Vektor murni (AI/SVG) scalable\n- Palette maks 3 warna (sesuaikan setelah brand color fix)\n- Clear space / safe area didefinisikan\n- Export: SVG + PNG transparan (16/32/128/512) + PDF\n- Cek contrast ratio (WCAG)\n\nPERHATIAN BRIEF: sebelum produksi visual, Tyo WAJIB klarifikasi - (1) kategori bisnis okuki, (2) audiens & tone, (3) warna brand/reference. Konsep di atas pakai asumsi; pilih 1 arah lalu kami finalisasi."
+    },
+    {
+      "id": "ORD-C378E12A",
+      "code": "ADS-2026-0002",
+      "client": "TYO",
+      "phone": "085745550831",
+      "email": "wicaksonotyo@gmail.com",
+      "brand": "Bagiak",
+      "service": "Logo",
+      "package": "Basic",
+      "price": 650000,
+      "payment": "PAID",
+      "status": "QC",
+      "hermes": "WORKING",
+      "progress": 85,
+      "objective": "berikan desain yang sangat menarik, dengan identitas warna merah dan cream",
+      "style": "playfull",
+      "business": "Makanan",
+      "target": "20-35",
+      "reference": "",
+      "created_at": "2026-08-30T01:03:11",
+      "updated_at": "2026-08-30T21:27:20",
+      "log": [
+        {
+          "at": "2026-08-30T01:03:11",
+          "by": "system",
+          "msg": "Order dibuat dari landing page"
+        },
+        {
+          "at": "2026-08-30T01:11:28",
+          "by": "hermes",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T01:21:08",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T11:52:11",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T11:54:42",
+          "by": "hermes",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T11:57:19",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T12:03:30",
+          "by": "dashboard",
+          "msg": "update status, progress"
+        },
+        {
+          "at": "2026-08-30T12:03:42",
+          "by": "dashboard",
+          "msg": "update status, progress"
+        },
+        {
+          "at": "2026-08-30T12:04:20",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T12:04:25",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T12:04:29",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:26:57",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:27:04",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:27:11",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:27:20",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        }
+      ],
+      "concepts": [
+        {
+          "name": "Bagiak Wordmark \u2014 Playful Custom Lettering",
+          "core": "Wordmark 'Bagiak' jadi hero. Huruf rounded-bold dengan satu detail makanan tersembunyi (mis. ekor 'g' melengkung jadi sendok/daun, atau dot 'i' jadi biji). Logo = nama, kuat di feed & app icon.",
+          "visual": "Logotype lowercase/hybrid, rounded slab. Icon kecil opsional (sendok-garpu atau daun) di samping sebagai secondary mark.",
+          "color": "Merah utama (#E63946) + Cream (#FFF3E0) sebagai background/secondary. Tanpa aksen ketiga biar clean.",
+          "typography": "Rounded bold sans (Fredoka/Quicksand-like) \u2014 playful tapi rapi, tight tracking.",
+          "mood": "Ramah, enerjik, percaya diri, nggak norak.",
+          "layout": "Horizontal lockup; wordmark sebagai hero, icon kecil secondary di kiri/kanan.",
+          "reasoning": "Di kategori makanan, wordmark kuat = gampang diingat & di feed. Playful tapi tetap elegan. Paling aman buat Basic package.",
+          "strengths": "Clean, scalable, mudah di merch & app icon, cepat dikenali, murah produksi.",
+          "weaknesses": "Kalau cuma wordmark bisa mirip kompetitor; butuh eksekusi letterform unik biar beda."
+        },
+        {
+          "name": "Maskot Bagiak \u2014 Karakter Makanan Lucu",
+          "core": "Karakter/maskot makanan yang lucu & ngajak share \u2014 personifikasi 'Bagiak'. Bisa sebungkus/semangkok makanan dengan muka ramah, atau karakter 'bagi=share' yang pegang sendok. Emotional connection langsung.",
+          "visual": "Maskot rounded di dalam badge bulat, wordmark di bawah. Ekspresi playful, pose ngajak makan bareng.",
+          "color": "Merah dominan + cream, plus 1 pop ceria opsional (mustard #F4A261) buat aksen bahagia.",
+          "typography": "Rounded friendly (Baloo/Nunito-like) \u2014 mengundang.",
+          "mood": "Fun, sosial, mengundang \u2014 vibe 'ajak makan bareng'.",
+          "layout": "Icon/maskot di atas, wordmark di bawah (atau lockup kiri-kanan).",
+          "reasoning": "Maskot kuat di emotional connection & merch (sticker, plush, packaging). Cocok target 20-35 yang suka share & koleksi.",
+          "strengths": "Catchy, memorable, Instagrammable, kuat di merchandise & sticker.",
+          "weaknesses": "Bisa kelihatan 'anak-anak'/less premium kalau eksekusi kurang rapi; maskot susah di favicon kecil (butuh simplified mark)."
+        },
+        {
+          "name": "Bagiak Badge \u2014 Sistem Identitas Lengkap",
+          "core": "Badge/segel bulat + wordmark + pattern merah-cream. Terasa 'brand lengkap' meski cuma Basic. Differensiasi: banyak logo food cuma wordmark/maskot; badge kasih kesan established.",
+          "visual": "Seal/badge (lingkaran merah, garis tepi cream), di dalam ada icon makanan simpel + wordmark. Plus pattern dot/strip merah-cream buat aplikasi kemasan.",
+          "color": "Merah + Cream, dengan variasi tint (merah muda/maroon) biar ada depth tanpa nambah warna.",
+          "typography": "Bold grotesk/rounded dipadukan \u2014 wordmark dalam badge, sans sekunder untuk body.",
+          "mood": "Kekinian, terstruktur, trustworthy tapi tetap playful.",
+          "layout": "Badge lockup (icon + wordmark dalam lingkaran), plus pattern sebagai elemen pendukung kemasan.",
+          "reasoning": "Badge fleksibel buat packaging/signage & terasa 'lengkap'. Cocok kalau Bagiak mau naik ke kemasan UMKM nanti.",
+          "strengths": "Fleksibel, berkesan 'lengkap', cocok kemasan & store signage, scalable.",
+          "weaknesses": "Badge bisa berat di ukuran sangat kecil; butuh simplified version untuk favicon/app icon."
+        }
+      ],
+      "analysis": "Brand \"Bagiak\" \u2014 kategori MAKANAN (food), target 20\u201335, gaya PLAYFUL, identitas warna MERAH + CREAM. Klien: TYO (order internal / studio).\n\nMASALAH KLIEN\nKategori makanan itu SANGAT sesak \u2014 di feed sosmed maupun di shelf. Sekadar \"logo merah\" nggak cukup buat stand out. Brand ini butuh KEPRIBADIAN yang langsung kerasa playful tapi tetap rapi & nggak norak.\n\nAUDIENS\n20\u201335 (Gen Z + Millennial), urban, peduli vibe & visual, suka konten yang \"shareable\". Mereka nggak cuma beli rasa, tapi beli kesan/feel.\n\nPOSISI BRAND\nPlayful + hangat. Merah = energi & rangsang apetit; Cream = ramah & soft (ngurangin agresivitas merah). Kombinasi kuat buat makanan kekinian yang mau dekat sama anak muda.\n\nARAH DESAIN (3 konsep di bawah)\nMainin bentuk main-main + palette merah/cream, tapi tetap punya STRUKTUR biar nggak childish. Tiga arah sengaja beda pendekatan (typography-first / character-first / system-first) biar Tyo bisa pilih ARAH, bukan cuma variasi warna.\n\nBRIEF LEMAH \u2014 FLAG JUJUR\nObjective cuma \"menarik + merah cream\", reference KOSONG, nggak ada detail produk (makanan apa? jajanan / resto / UMKM kemasan?). Nama \"Bagiak\" juga bisa bermakna \"bagi\" (share) \u2014 potensi positioning bagus yang belum dimanfaatin. SARAN SEBELUM PRODUKSI VISUAL: Tyo perlu klarifikasi (1) jenis makanan & format aplikasi, (2) mau beda dari kompetitor atau ikut arus playful, (3) ada short-name/panggilan? (mis. \"Bagi\" / \"BK\").",
+      "qc": "QC AWAL (sebelum produksi visual):\n\nKONTEN\n- Ejaan \"Bagiak\" konsisten di semua lockup & varian\n- Tidak ada claim menyesatkan / kata terlarang (cth. \"terbaik\", \"no.1\" tanpa bukti)\n- Tagline (jika ada) selaras brief playful + makanan\n\nVISUAL\n- Hierarchy jelas: icon/maskot vs wordmark tidak saling mendominasi\n- Alignment & spacing konsisten (grid)\n- Terbaca di ukuran kecil (favicon / app icon 32px)\n- Kontras cukup: merah di cream, cek WCAG (target ratio >= 3:1 elemen besar)\n- Komposisi seimbang, tidak clutter\n\nTEKNIS\n- Vektor murni (AI/SVG) \u2014 scalable tanpa lost quality\n- Palette merah + cream (+ maks 1 aksen bila perlu)\n- Clear space / safe area didefinisikan\n- Export: SVG + PNG transparan (16/32/128/512) + PDF\n- Cek contrast ratio (WCAG) untuk aksesibilitas\n\nPERHATIAN BRIEF: sebelum produksi visual, Tyo WAJIB klarifikasi (1) jenis makanan & format aplikasi, (2) beda vs ikut arus kompetitor, (3) short-name/panggilan. Konsep di atas pakai asumsi gaya; pilih 1 arah lalu finalisasi."
+    },
+    {
+      "id": "ORD-CC44CE36",
+      "code": "ADS-2026-0004",
+      "client": "Prasetyo Effendik",
+      "phone": "000000000000",
+      "email": "wicaksonotyo@gmail.com",
+      "brand": "d",
+      "service": "Packaging",
+      "package": "Basic",
+      "price": 1050000,
+      "payment": "PAID",
+      "status": "CONCEPT",
+      "hermes": "COMPLETED",
+      "progress": 40,
+      "objective": "a",
+      "style": "a",
+      "business": "a",
+      "target": "a",
+      "reference": "a",
+      "created_at": "2026-08-30T01:44:25",
+      "updated_at": "2026-08-30T21:27:20",
+      "log": [
+        {
+          "at": "2026-08-30T01:44:25",
+          "by": "system",
+          "msg": "Order dibuat dari landing page"
+        },
+        {
+          "at": "2026-08-30T01:46:56",
+          "by": "hermes",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T11:52:11",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T11:57:19",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T12:04:20",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T12:04:25",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T12:04:29",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:26:57",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:27:04",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:27:11",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        },
+        {
+          "at": "2026-08-30T21:27:20",
+          "by": "dashboard",
+          "msg": "update status, hermes, progress"
+        }
+      ],
+      "concepts": [
+        {
+          "name": "\"d\" Mono Minimal - Initial Hero (premium / skincare / tech)",
+          "core": "Satu huruf 'd' jadi hero mark besar di tengah kemasan, sisanya negative space. Pendekatan identity-first: kemasan = kanvas untuk 1 initial elegan. Cocok kalau 'd' brand premium yang mau kesan 'mahal lewat diam'.",
+          "visual": "Front-face dominan: initial 'd' besar (display serif atau geometric). Struktur kemasan asumsi: rigid box / sleek pouch matte. 1 detail khas (mis. potongan 'd' jadi handle/loop) biar beda.",
+          "color": "ASUMSI - Monokrom: deep ink (#1A1A1A) di off-white (#FAF9F6), atau sebaliknya. Tanpa aksen (premium = restraint). GANTI kalau brand punya warna.",
+          "typography": "Geometric/grotesk modern atau serif display tipis. Tracking lebar, hierarki: initial > nama kecil > info produk.",
+          "mood": "Tenang, mewah, confident, 'quiet luxury'.",
+          "layout": "Center-lockup: initial hero, nama brand kecil di bawah, info wajib di belakang. Banyak whitespace.",
+          "reasoning": "Brand 1-huruf ('d') secara natural minta treatment minimalis. Paling aman buat skincare/tech/gadget premium di mana shelf-impact datang dari restraint, bukan noise.",
+          "strengths": "Timeless, scalable, terasa mahal, gampang di berbagai format wadah.",
+          "weaknesses": "Rawan terasa 'kosong/generik' kalau eksekusi datar; butuh 1 detail unik biar nggak template."
+        },
+        {
+          "name": "\"d\" Bold Pop - Color Block Shelf Impact (F&B / snack UMKM)",
+          "core": "Warna penuh & blocky buat narik perhatian di rak. 'd' ditaruh dalam shape kontras (lingkaran/burst) di tengah, total energi. Cocok kalau 'd' produk makanan/minuman cepat yang saingan di shelf.",
+          "visual": "Struktur asumsi: stand-up pouch / label botol. Front full-bleed warna, 'd' dalam badge putih/kontras. Pattern titik/garis di sisi buat vibe fun.",
+          "color": "ASUMSI - Pop block: 1 warna dominan cerah (mis. Coral #FF6B5E / Electric Blue #2D9CDB) + Cream + 1 aksen. High contrast. GANTI sesuai brand.",
+          "typography": "Rounded bold sans (Poppins/Fredoka-like) - playful, friendly, gampang dibaca dari jauh.",
+          "mood": "Enerjik, ceria, mengundang, 'beli aku'.",
+          "layout": "Front hero: badge berisi 'd' di tengah, nama di atas/bawah, info wajib di belakang. Full-bleed warna.",
+          "reasoning": "Di F&B, shelf-impact = survival. Warna penuh + shape kontras langsung nangkep mata Gen Z di minimarket / etalase.",
+          "strengths": "Catchy, tinggi visibility, Instagrammable, kuat di merch.",
+          "weaknesses": "Kalau warna nggak on-brand bisa norak; kurang 'premium' - nggak cocok kalau 'd' mau positioning mahal."
+        },
+        {
+          "name": "\"d\" Kraft Editorial - Artisanal Stamp (handcrafted / coffee / F&B premium)",
+          "core": "Kesan 'kami bikin dengan tangan' lewat kraft + stamp + serif. Differensiasi: kemasan murah sering all-plastik/neon; kraft editorial kasih kesan credible & ramah lingkungan.",
+          "visual": "Struktur asumsi: kraft pouch / label kertas / box cokelat. Stempel lingkaran berisi 'd' + wordmark serif + 1 ikon simpel. Plus garis tepi & info tipografi kecil rapi.",
+          "color": "ASUMSI - Earthy: kraft/cream (#E8DFD0) + espresso (#2B2118) + 1 aksen muted (terracotta/olive). GANTI sesuai brand.",
+          "typography": "Modern serif display + sans sekunder rapi. Tracking normal, feel editorial.",
+          "mood": "Artisanal, trustworthy, refined, tetap hangat.",
+          "layout": "Stamp lockup (lingkaran di depan), wordmark + info di bawah, garis tepi tipis. Info wajib di belakang rapi.",
+          "reasoning": "Cocok kalau 'd' produk handcrafted / kopi / F&B premium yang mau beda dari kemasan plastik industri. Terasa 'brand lengkap' meski Basic.",
+          "strengths": "Berkesan credible & eco, beda dari kompetitor, fleksibel.",
+          "weaknesses": "Kraft bisa kurang 'kekinian' di mata Gen Z; butuh balancing biar nggak kelihatan tua."
+        }
+      ],
+      "analysis": "Brand \"d\" - order PACKAGING paket Basic dari klien Prasetyo Effendik.\n\nWARNING BRIEF KOSONG / PLACEHOLDER: semua field (objective, style, business, target, reference) isinya cuma \"a\", dan brand isinya \"d\". Ini kemungkinan besar order testing / brief belum diisi sama sekali. Packaging adalah deliverable paling kontekstual di studio - desain kemasan WAJIB tahu: produk apa, isi, kategori, regulasi (kadaluarsa / BPOM-PIRT kalau F&B), target, dan channel jual (shelf ritel vs online). Tanpa itu, desain nggak bisa di-grounding ke bisnis nyata - dan studio-soul jelas: design is communication before decoration.\n\nMASALAH KLIEN: Kami nggak tahu \"d\" itu produk apa. Kemasan butuh minimal: isi produk, kategori, audiens, dan constraint wadah. Tanpa itu, kami cuma nebak.\n\nAUDIENS: belum diketahui (target = \"a\").\nPOSISI BRAND: belum diketahui. Nama \"d\" - 1 huruf, minimalis ekstrem, bisa jadi brand fashion/tech/lifestyle yang sengaja pakai initial. TAPI ini asumsi, bukan fakta brief.\n\nARAH DESAIN: Karena brief kosong, kami sengaja kasih 3 pendekatan BEDA yang masing-masing mengasumsikan jenis produk berbeda (premium/skincare-tech / F&B-snack pop / artisanal-kraft). Tujuannya: begitu brief diisi, Tyo tinggal pilih 1 arah lalu kami finalisasi - bukan malah mulai gambar blind.\n\n3 hal WAJIB Tyo isi sebelum produksi visual:\n(1) \"d\" itu produk apa? (F&B, skincare, fashion, elektronik?)\n(2) target & channel jual (shelf ritel, online shop, atau gift?)\n(3) constraint wadah & info wajib (BPOM/PIRT, netto, expired - kalau F&B).\n\n3 konsep di bawah pakai PALETTE & STRUKTUR ASUMSI - ganti sesuai arah yang Tyo pilih. Jangan produksi visual sebelum brief diisi.",
+      "qc": "QC AWAL (sebelum produksi visual):\n\nKONTEN\n- Nama brand \"d\" konsisten di semua panel (depan/belakang/sisi)\n- Info wajib lengkap SESUAI kategori: kalau F&B wajib netto + BPOM-PIRT + kadaluarsa + komposisi; kalau non-F&B sesuaikan\n- Tidak ada claim menyesatkan / kata terlarang ('terbaik', 'no.1' tanpa bukti)\n- Copy (tagline/desc) selaras brief (brief masih kosong - perlu diisi)\n\nVISUAL\n- Hierarchy jelas: initial/logo vs info produk tidak saling mendominasi\n- Alignment & spacing konsisten (grid), safe-area untuk cetak\n- Terbaca dari jarak shelf (minimum 1.5m untuk F&B) & di foto online\n- Kontras cukup (cek WCAG, ratio >= 3:1 elemen besar)\n- Komposisi seimbang, tidak clutter\n\nTEKNIS\n- Vektor murni (AI/SVG) scalable, typography outline saat export\n- Palette maks 3 warna (sesuaikan setelah brand fix)\n- Dieline / bleed / safe area didefinisikan (cetak kemasan)\n- Export: AI + PDF (print-ready, CMYK) + PNG preview + mockup 3D\n- Cek contrast ratio & print resolution (300dpi minimal)\n\nPERHATIAN BRIEF: sebelum produksi visual, Tyo WAJIB klarifikasi (1) kategori produk, (2) target & channel, (3) info wajib/regulasi. Konsep di atas pakai asumsi; pilih 1 arah lalu finalisasi."
+    }
+  ]
+}
