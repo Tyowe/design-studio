@@ -5,7 +5,7 @@
 
 // ===== WHATSAPP CONFIG (opsional, untuk notifikasi) =====
 // GANTI dengan nomor studio tanpa "+" atau "0" di depan.
-const WHATSAPP_NUMBER = "6281234567890";
+const WHATSAPP_NUMBER = "6285745550831";
 
 // ===== CATALOG (6 layanan, masing-masing 3 paket) =====
 const catalog = {
@@ -195,7 +195,8 @@ function simulatePayment(method) {
     service: currentService,
     package: catalog[currentService][currentPackageIndex][0],
     price: total,
-    paid: true, // demo: anggap DP 50% sudah lunas
+    payment: "UNPAID",
+    status: "NEW",
     name: fd.get("name") || "",
     phone: fd.get("phone") || "",
     email: fd.get("email") || "",
@@ -214,11 +215,11 @@ function simulatePayment(method) {
   console.log("Payment simulated:", { method, orderId: currentOrderId, service: currentService, total: total });
 
   sendOrderToBridge(orderPayload).then(res => {
-    if (res.ok) {
-      console.log("Order tersimpan ke server:", res.order.code);
-    } else {
-      console.warn("Gagal simpan ke server (pastikan server.py jalan):", res.error);
-    }
+    const code = res.order?.code || currentOrderId;
+    const waMsg = encodeURIComponent(
+      `Halo, saya ingin konfirmasi order ${code} — ${currentService} (${catalog[currentService][currentPackageIndex][0]}).\n\nSaya sudah mengisi brief di form. Mohon konfirmasi jadwal & DP.\n\nNama: ${fd.get("name") || ""}\nNo. HP: ${fd.get("phone") || ""}`
+    );
+    window.location.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + waMsg;
   });
 }
 
