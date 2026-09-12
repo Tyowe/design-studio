@@ -184,18 +184,19 @@ function sendOrderToBridge(payload) {
   }).then(r => r.json()).catch(err => ({ ok: false, error: String(err) }));
 }
 
-function simulatePayment(method) {
+function checkoutToWhatsApp() {
   const total = getTotal();
   const dp = Math.round(total * 0.5);
 
   // Kumpulkan data brief dari form
   const form = document.getElementById("orderForm");
   const fd = new FormData(form);
+
   const orderPayload = {
     service: currentService,
     package: catalog[currentService][currentPackageIndex][0],
     price: total,
-    payment: "UNPAID",
+    payment: "UNPAID", // tanpa gateway — konfirmasi manual via WA
     status: "NEW",
     name: fd.get("name") || "",
     phone: fd.get("phone") || "",
@@ -208,17 +209,25 @@ function simulatePayment(method) {
     reference: fd.get("reference") || ""
   };
 
-  // Tampilkan sukses dulu (UX), lalu kirim ke server di background
+  // Tampilkan sukses (UX), lalu kirim ke server di background
   document.getElementById("paymentScreen").classList.remove("show");
   document.getElementById("successScreen").classList.add("show");
   document.getElementById("successOrderId").textContent = currentOrderId;
-  console.log("Payment simulated:", { method, orderId: currentOrderId, service: currentService, total: total });
 
   sendOrderToBridge(orderPayload).then(res => {
     const code = res.order?.code || currentOrderId;
+    const service = currentService;
+    const pkgName = catalog[currentService][currentPackageIndex][0];
     const waMsg = encodeURIComponent(
-      `Halo, saya ingin konfirmasi order ${code} — ${currentService} (${catalog[currentService][currentPackageIndex][0]}).\n\nSaya sudah mengisi brief di form. Mohon konfirmasi jadwal & DP.\n\nNama: ${fd.get("name") || ""}\nNo. HP: ${fd.get("phone") || ""}`
+      `Halo, saya ingin konfirmasi order ${code}\n` +
+      `${service} (${pkgName})\n\n` +
+      `Total: Rp ${total.toLocaleString('id-ID')}\n` +
+      `DP yang harus dibayar (50%): Rp ${dp.toLocaleString('id-ID')}\n` +
+      `Nama: ${fd.get("name") || ""}\n` +
+      `HP: ${fd.get("phone") || ""}\n` +
+      `Brand: ${fd.get("brand") || ""}`
     );
+
     window.location.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + waMsg;
   });
 }

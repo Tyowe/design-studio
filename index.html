@@ -599,7 +599,7 @@
   <div class="container">
     <div class="eyebrow reveal">Design Studio • Professional Creative Service</div>
     <h1 class="reveal">Design yang membuat brand terlihat <span>lebih bernilai.</span></h1>
-    <p class="reveal">Pilih jasa, pilih paket, isi brief, checkout, lalu bayar. Setelah pembayaran terkonfirmasi, project siap masuk ke workflow produksi studio.</p>
+    <p class="reveal">Pilih jasa, pilih paket, isi brief, kirim ke WhatsApp. Order masuk otomatis ke dashboard studio — tanpa payment gateway. DP 50% dikonfirmasi langsung lewat WhatsApp.</p>
     <div class="hero-actions reveal">
       <a class="btn btn-primary" href="#services">Pilih Jasa →</a>
       <a class="btn btn-dark" href="#process">Lihat Cara Kerja</a>
@@ -745,9 +745,9 @@
 
     <!-- PAYMENT -->
     <div class="payment-box" id="paymentScreen">
-      <div class="eyebrow">Payment</div>
-      <h3>Pilih metode pembayaran</h3>
-      <p>Order sudah dibuat. Pada implementasi production, pilihan berikut akan membuka halaman pembayaran Midtrans/Xendit.</p>
+      <div class="eyebrow">Konfirmasi via WhatsApp</div>
+      <h3>Setelah kirim, kamu akan diarahkan ke WhatsApp</h3>
+      <p>Order sudah dibuat. Kami tidak pakai payment gateway — konfirmasi DP langsung lewat WhatsApp ke nomor resmi studio.</p>
       <div class="order-id" id="paymentOrderId">DS-0000</div>
 
       <div class="checkout-summary">
@@ -758,20 +758,9 @@
 
       <p class="pay-note" id="payNote"></p>
 
-      <div class="payment-methods">
-        <button class="payment-method" onclick="simulatePayment('QRIS')">
-          <b>QRIS</b><small>Scan QR</small>
-        </button>
-        <button class="payment-method" onclick="simulatePayment('Virtual Account')">
-          <b>Virtual Account</b><small>BCA / BNI / BRI / Mandiri</small>
-        </button>
-        <button class="payment-method" onclick="simulatePayment('E-Wallet')">
-          <b>E-Wallet</b><small>GoPay / ShopeePay / lainnya</small>
-        </button>
-      </div>
+      <button class="btn btn-dark" onclick="checkoutToWhatsApp()" style="width:100%;padding:14px;margin-top:10px">Lanjutkan ke WhatsApp →</button>
 
-      <button class="btn btn-dark" onclick="backToOrder()">← Kembali ke brief</button>
-      <div class="note">Klik salah satu metode untuk mensimulasikan pembayaran berhasil.</div>
+      <button class="btn btn-light" onclick="backToOrder()" style="margin-top:12px">← Kembali ke brief</button>
     </div>
 
     <!-- SUCCESS -->
